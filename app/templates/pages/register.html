@@ -1,0 +1,114 @@
+
+<div class="content">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Register</h4>
+                    </div>
+
+                    <br />
+                    {% if msg %}
+                    <p>{{ msg | safe }}</p>
+                    <br />
+                    {% endif %}
+
+                    <div class="card-body">
+                        <form method="post" action="">
+                            {{ form.hidden_tag() }}
+                            <div class="row">
+
+                                <div class="col-md-1 px-1">
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 px-1">
+                                    <div class="form-group">
+                                        {{ form.name(placeholder="Name") }}
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row">
+
+                                <div class="col-md-1 px-1">
+                                    <div class="form-group">
+                                        <label>Lastn</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 px-1">
+                                    <div class="form-group">
+                                        {{ form.lastn(placeholder="Last name") }}
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-1 px-1">
+                                    <div class="form-group">
+                                        <label>Username</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 px-1">
+                                    <div class="form-group" value="user1">
+                                        {{ form.username(placeholder="Username") }}
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-1 px-1">
+                                    <div class="form-group">
+                                        <label>eMail</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 px-1">
+                                    <div class="form-group">
+                                        {{ form.email(placeholder="Email") }}
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-1 pl-1">
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 pl-1">
+                                    <div class="form-group" value="parola">
+                                        {{ form.password(placeholder="Password") }}
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <input type='submit' name='submit' value='Register' class="primary"/>
+                            &nbsp; &nbsp; Aveți deja un cont? <a href={{url_for('login')}} >Logați-vă</a>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,96 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="content">
+
+        <div class="container-fluid">
+            <button id="buton1" onclick="addServerInLista()" class="btn" style="height:30px;width:30px"><i class="fa fa-plus"></i>Add Friend</button>
+            <br>
+            <div class="card-body">
+                <form method="post" action="">
+                    <div id="unhide">
+                        <div class="row">
+                            <div class="col-md-1 px-1">
+                                <div class="form-group">
+                                        <label id="lip">Username</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 px-1">
+                                    <div class="form-group" id="textfield2">
+                                        {{ form.username_friend(placeholder="username") }}
+                                    </div>
+                                <div hidden> <!--strict jinja, hidden automat ascunde-->
+                                    {% if current_user.is_authenticated %}
+                                        {{ form.username_fk(value=current_user.username) }}
+                                    {% endif %}
+                                </div>
+                                </div>
+                        </div>
+
+                        <button id="btn2" onclick="funcadd()"> Confirm</button>
+
+                        <script>
+                            function funcadd(){
+                                var username_friend = document.getElementById("textfield2");
+                                var output = username_friend.value;
+                                document.getElementById("demo").innerHTML = output;
+                                //document.getElementById("unhide").style.display = "none";
+                                username_friend.value = "";
+                            }
+                        </script>
+                    </div>
+                </form>
+            </div>
+
+            {% if current_user.is_authenticated %}
+            Salut, {{ current_user.name }}!
+            {% endif %}
+
+            <script>
+                document.getElementById("unhide").style.display = "none";
+                function addServerInLista() {
+                    document.getElementById("unhide").style.display = "block";
+                }
+            </script>
+        <ol></ol>
+            <br>
+            <div class="row">
+                <div class="">
+                    <div class="card card-user">
+                        <div class="card-image">
+                            <img src="https://miro.medium.com/max/875/1*IMKVt6cw2g1hu8ukdrV0bw.png" alt="...">
+                        </div>
+
+                    <ol id="demo"></ol>
+
+                        <div class="author">
+                            <img class="avatar border-gray" src="/static/assets/img/faces/you.jpg" alt="...">
+                            {% for s in server %}
+                            {% if s.username_fk==current_user.username %}
+                                <ol id="sterg">
+                                {{ s.username_friend }}
+                                <td>
+                                    <form method="POST" action="./sters" style="display: inline">
+                                      <input type="hidden" value="{{s.username_friend}}" name="username_friend">
+                                      <input type="submit" value="Delete">
+                                    </form>
+                                </td>
+                            </ol>
+                            {% endif %}
+                            {% endfor %}
+
+                            <script>
+                                document.getElementById("btn2").value = getSavedValue("");
+                                document.getElementById("buton1").value = getSavedValue("");
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

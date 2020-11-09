@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/static/img/icon.ico">
+    {% if title %}    
+        <title>{{ title }}</title>
+    {% else %}
+        <title>Platform intellBot TK</title>
+    {% endif %}
+
+    <!-- Codul pentru formatul responsive -->
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/static/assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
+    <link href="/static/css/stil.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="bar-lateral">
+        {% include 'includes/sidebar.html' %}
+        <div class="main-panel">
+            {% include 'includes/navigation.html' %}
+            {{ content | safe }}
+            {% include 'includes/footer.html' %}
+        </div>
+    </div>
+</body>
+{% include 'includes/scripts.html' %}
+</html>

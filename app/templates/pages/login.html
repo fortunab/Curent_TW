@@ -1,0 +1,62 @@
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Login</h4>
+                    </div>
+                    <br />
+                    {% if msg %}
+                    <p>{{ msg | safe }}</p>
+                    <br />
+                    {% endif %}
+                    <div class="card-body">
+                        <form method="post" action="">
+                            {{ form.hidden_tag() }}
+                            <div class="row">
+                                <div class="col-md-1 px-1">
+                                    <div class="form-group">
+                                        <label>Username</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 px-1">
+                                    <div class="form-group">
+                                        {{ form.username(placeholder="Username") }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1 pl-1">
+                                    <div class="form-group">
+                                        <label id="txtNewPassword">Password</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 pl-1">
+                                    <div class="form-group" id="txtNewPassword2">
+                                        {{ form.password(placeholder="Password") }}
+                                    </div>
+                                </div>
+                            </div>
+                            <input type='submit' onclick="logare_valida()" name='submit' value='Login' class="primary"/>
+                            &nbsp &nbsp; <a href={{url_for('register')}}> Inregistrare</a>
+                            <div class="clearfix"></div>
+                            <script>
+                                var pastrare_pw = {{ password }};
+                                var myInput = document.getElementById("txtNewPassword2");
+                                function logare_valida() {
+                                    if(myInput.value.length < 6){
+                                        alert("Va rugam sa introduceti o parola mai lunga")
+                                    }
+                                    if(pastrare_pw.value != myInput.value){
+                                        alert("Parola nu se potriveste cu numele utilizatorului")
+                                    }
+                                }
+                            </script>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
