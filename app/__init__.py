@@ -11,6 +11,7 @@ db = SQLAlchemy(app)
 bc = Bcrypt(app)
 lm = LoginManager()
 lm.init_app(app)
+#Diogen si Flavia sa fie sanatosi
 
 @app.before_first_request
 def initialize_database():
