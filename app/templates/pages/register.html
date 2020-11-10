@@ -1,14 +1,30 @@
+<style>
+* {
+  box-sizing: border-box;
+}
 
-<div class="content">
+/* Create two equal columns that floats next to each other */
+.column {
+  float: none;
+  width: 50%;
+  padding: 10px;
+  height: 230px; /* Should be removed. Only for demonstration */
+}
 
-    <div class="container-fluid">
-        <div class="row">
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+<div class="content" align="center" style="height: 80%; width: auto; color: black">
+    <div class="container-fluid" >
             <div class="col-md-8">
-                <div class="card">
+                <div class="card" align="center" style="background-color: #b65fff; width: 620px;">
                     <div class="card-header">
-                        <h4 class="card-title">Register</h4>
+                        <h2 class="card-title" style="margin-bottom: 10px"><b>REGISTER</b></h2>
                     </div>
-
                     <br />
                     {% if msg %}
                     <p>{{ msg | safe }}</p>
@@ -19,89 +35,35 @@
                         <form method="post" action="">
                             {{ form.hidden_tag() }}
                             <div class="row">
+  <div class="column">
+                                <label style="font-size: 20px;color: black">Name:  </label>
+<br>
+                                  <label style="font-size: 20px;color: black">Last Name:  </label>
+<br>
+                                  <label style="font-size: 20px;color: black">Username:  </label>
+<br>
+                                  <label style="font-size: 20px;color: black">Email:  </label>
+<br>
+                                  <label style="font-size: 20px;color: black">Password:  </label>
 
-                                <div class="col-md-1 px-1">
-                                    <div class="form-group">
-                                        <label>Name</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3 px-1">
-                                    <div class="form-group">
-                                        {{ form.name(placeholder="Name") }}
-                                    </div>
-                                </div>
-
-                            </div>
-
-
-                            <div class="row">
-
-                                <div class="col-md-1 px-1">
-                                    <div class="form-group">
-                                        <label>Lastn</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3 px-1">
-                                    <div class="form-group">
-                                        {{ form.lastn(placeholder="Last name") }}
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="row">
-
-                                <div class="col-md-1 px-1">
-                                    <div class="form-group">
-                                        <label>Username</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3 px-1">
-                                    <div class="form-group" value="user1">
-                                        {{ form.username(placeholder="Username") }}
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="row">
-
-                                <div class="col-md-1 px-1">
-                                    <div class="form-group">
-                                        <label>eMail</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3 px-1">
-                                    <div class="form-group">
-                                        {{ form.email(placeholder="Email") }}
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="row">
-
-                                <div class="col-md-1 pl-1">
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3 pl-1">
-                                    <div class="form-group" value="parola">
-                                        {{ form.password(placeholder="Password") }}
-                                    </div>
-                                </div>
-
-                            </div>
-
+  </div>
+  <div class="column" >
+    <label style="margin-left: 10px; font-size: 20px">{{ form.name(placeholder="Name") }}</label>
+                            <br>
+                            <label style="margin-left: 10px; font-size: 20px">{{ form.lastn(placeholder="Last name") }}</label>
+                            <br>
+                            <label style="margin-left: 10px; font-size: 20px">{{ form.username(placeholder="Username") }}</label>
+                            <br>
+                            <label style="margin-left: 10px; font-size: 20px">{{ form.email(placeholder="Email") }}</label>
+                            <br>
+                            <label style="margin-left: 10px; font-size: 20px">{{ form.password(placeholder="Password") }}</label>
+  </div>
+</div>
+                            <div style="margin-top: 10px">
                             <input type='submit' name='submit' value='Register' class="primary"/>
                             &nbsp; &nbsp; Aveți deja un cont? <a href={{url_for('login')}} >Logați-vă</a>
                             <div class="clearfix"></div>
+                                </div>
                         </form>
                     </div>
                 </div>
