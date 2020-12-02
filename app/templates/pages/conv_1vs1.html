@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+/* Set height of body and the document to 100% */
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial;
+        }
+        #chatbox {
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+        margin-top: 60px;
+      }
+      #userInput {
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+        margin-top: 60px;
+      }
+      #textInput {
+        width: 90%;
+        border: none;
+        border-bottom: 3px solid black;
+        font-family: monospace;
+        font-size: 17px;
+      }
+      .userText {
+        color: white;
+        font-family: monospace;
+        font-size: 17px;
+        text-align: right;
+        line-height: 30px;
+      }
+      .userText span {
+        background-color: #808080;
+        padding: 10px;
+        border-radius: 2px;
+      }
+      .botText {
+        color: white;
+        font-family: monospace;
+        font-size: 17px;
+        text-align: left;
+        line-height: 30px;
+      }
+      .botText span {
+        background-color: #4169e1;
+        padding: 10px;
+        border-radius: 2px;
+      }
+      #tidbit {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 300px;
+      }
+      .boxed {
+        margin-left: auto;
+        margin-right: auto;
+        width: 78%;
+        margin-top: 60px;
+        border: 1px solid green;
+      }
+    </style>
+</head>
+<body>
+<div class="content" align="center" style="height: 80%; width: auto; color: black">
+    <div class="container-fluid">
+    <div>
+        <h4 align="center">{{ username_friend | safe }}</h4>
+
+        <div class="boxed">
+            <div>
+                <div id="chatbox">
+                    <p class="botText"></p>
+                </div>
+                <div id="userInput">
+                    <input id="textInput" type="text" name="msg" placeholder="Mesaj" />
+                </div>
+            </div>
+            <script>
+                function getBotResponse() {
+                    var rawText = $("#textInput").val();
+                    var userHtml = '<p class="userText"><img src="static/media/user.ico" width="40" height="30"><span>' + rawText + "</span></p>";
+                    $("#textInput").val("");
+                    $("#chatbox").append(userHtml);
+                    document
+                        .getElementById("userInput")
+                        .scrollIntoView({ block: "start", behavior: "smooth" });
+                    $.get("/get", { msg: rawText }).done(function (data) {
+                        var botHtml = '<p class="botText"><img src="static/media/user.ico" width="40" height="30"><span>{{ username_friend | safe }}: ' + data + "</span></p>";
+                        $("#chatbox").append(botHtml);
+                        document
+                            .getElementById("userInput")
+                            .scrollIntoView({ block: "start", behavior: "smooth" });
+                    });
+                }
+                $("#textInput").keypress(function (e) {
+                    if (e.which == 13) {
+                        getBotResponse();
+                    }
+                });
+            </script>
+        </div>
+    </div>
+    </div>
+</div>
+</body>
+</html>

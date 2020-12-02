@@ -1,0 +1,116 @@
+{% extends "/layouts/layout.html" %}
+{% block body %}
+
+<!DOCTYPE html>
+  <html lang="ro">
+  <head>
+    <title>Platforma pentru comunicare</title>
+    <style>
+        a:link {
+          color: blue;
+          background-color: transparent;
+          text-decoration: none;
+        }
+    </style>
+  </head>
+<body>
+<div class="logoutContainer">
+    </br>
+    <p>Hei, <a href="user.html">{{current_user.name}}!</a></p>
+</div>
+<div class="chatContainer">
+  <div class="chatUserList">
+    <div class="chatUserListHeader">
+        <p>Lista de prieteni</p>
+        <div class="userInfo">
+            {% for f in friend %}
+                {% if f.username_fk==current_user.username %}
+                  <a href="/{{ current_user.username }}-{{f.username_friend}}">
+                  <p>{{ f.name_fr }}</p>
+                  </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+  </div>
+  <div class="conversation">
+    <div class="conversationHistory" id="conversationHistory">
+      <div class="conversationHeader">
+        <p>Mesaje</p>
+      </div>
+      <div id="messageList">
+
+        {% for m in messages %}
+        <ol id="demo">
+            <div class="messageFlex">
+              <div class="messageFlexCol1">
+                <div class="messageSender">
+                    <img src="static/media/user.ico" width="40" height="30"><strong>{{ m.username_mes }}</strong>: {{ m.text_mes }}
+                </div>
+                <div class="timeStamp" id="timeStamp"><i>{{ m.dateTime }}</i></div>
+
+              </div>
+            </div>
+        </ol>
+
+
+    {% endfor %}
+      {% for fc in fisiere %}
+            fisierele:{{ fc.name_fc | safe }}....... {{ fc.data_fc |safe }}
+        {% endfor %}
+
+    <div class="container">
+          <form method="POST" action="/ceva.html"
+             enctype = "multipart/form-data">
+              <div class="form-group">
+                  <label for="inputFile"></label>
+                  <input type="file" name="inputFile" id="myFile">
+              </div>
+
+              <button type = "submit">Submit</button>
+          </form>
+       </div>
+
+    <!-- Trimite date catre server pentru a crea o resursa -->
+    <form action="" method="POST">
+      <!--<input type="text" class="username" placeholder="Nume utilizator"/>
+      <input type="text" class="message" placeholder="Mesaje"/>-->
+
+
+        <div hidden>
+          <label id="lum">Introduceti-va numele de utilizator: </label>
+            {{ form.username_mes(value=current_user.username) }}
+        </div>
+        <br>
+      <label id="ltm">Introduceti un mesaj: </label>
+        {{ form.text_mes(placeholder="Mesaj") }}
+
+
+      <button id="btn2" onclick="funcadd()">
+          <a href="/index.html">Trimite</a>
+      </button>
+        </br>
+        <p>Faceti <a href="/index.html">refresh</a> pentru a vizualiza noile mesaje.</p>
+      <script>
+          function funcadd(){
+              var username_mes = document.getElementById("bon")
+              var output = username_mes + ": " + text_mes.value
+              document.getElementById("demo").innerHTML = output;
+              username_mes.value = "";
+              text_mes.value = "";
+          }
+      </script>
+
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+{% endblock %}

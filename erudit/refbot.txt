@@ -1,0 +1,82 @@
+Artificial Intelligence (AI) lies at the core of many activity sectors that have embraced new information technologies [1].
+While the roots of AI trace back to several decades ago, there is a clear consensus on the paramount importance featured nowadays by intelligent machines endowed with learning, reasoning and adaptation capabilities.
+It is by virtue of these capabilities that AI methods are achieving unprecedented levels of performance when learning to solve increasingly complex computational tasks, making them pivotal for the future development of the human society [2]. The sophistication of AI-powered systems has lately increased to such an extent that almost no human intervention is required for their design and deployment.
+When decisions derived from such systems ultimately affect humans’ lives (as in e.g., medicine, law or defense), there is an emerging need for understanding how such decisions are furnished by AI methods [3].
+
+While the very first AI systems were easily interpretable, the last years have witnessed the rise of opaque decision systems such as Deep Neural Networks (DNNs).
+The empirical success of Deep Learning (DL) models such as DNNs stems from a combination of efficient learning algorithms and their huge parametric space. The latter space comprises hundreds of layers and millions of parameters, which makes DNNs be considered as complex black-box models [4].
+The opposite of black-box-ness is transparency, i.e., the search for a direct understanding of the mechanism by which a model works [5].
+
+As black-box Machine Learning (ML) models are increasingly being employed to make important predictions in critical contexts, the demand for transparency is increasing from the various stakeholders in AI [6].
+The danger is on creating and using decisions that are not justifiable, legitimate, or that simply do not allow obtaining detailed explanations of their behaviour [7].
+Explanations supporting the output of a model are crucial, e.g., in precision medicine, where experts require far more information from the model than a simple binary prediction for supporting their diagnosis [8]. Other examples include autonomous vehicles in transportation, security, and finance, among others.
+
+In general, humans are reticent to adopt techniques that are not directly interpretable, tractable and trustworthy [9], given the increasing demand for ethical AI [3]. It is customary to think that by focusing solely on performance, the systems will be increasingly opaque. This is true in the sense that there is a trade-off between the performance of a model and its transparency [10]. However, an improvement in the understanding of a system can lead to the correction of its deficiencies. When developing a ML model, the consideration of interpretability as an additional design driver can improve its implementability for 3 reasons:
+•Interpretability helps ensure impartiality in decision-making, i.e., to detect, and consequently, correct from bias in the training dataset.
+•Interpretability facilitates the provision of robustness by highlighting potential adversarial perturbations that could change the prediction.
+•Interpretability can act as an insurance that only meaningful variables infer the output, i.e., guaranteeing that an underlying truthful causality exists in the model reasoning.
+
+One of the issues that hinders the establishment of common grounds is the interchangeable misuse of interpretability and explainability in the literature. There are notable differences among these concepts. To begin with, interpretability refers to a passive characteristic of a model referring to the level at which a given model makes sense for a human observer. This feature is also expressed as transparency. By contrast, explainability can be viewed as an active characteristic of a model, denoting any action or procedure taken by a model with the intent of clarifying or detailing its internal functions.
+
+To summarize the most commonly used nomenclature, in this section we clarify the distinction and similarities among terms often used in the ethical AI and XAI communities [3].
+•Understandability (or equivalently, intelligibility) denotes the characteristic of a model to make a human understand its function – how the model works – without any need for explaining its internal structure or the algorithmic means by which the model processes data internally [8].
+•Comprehensibility: When conceived for ML models, comprehensibility refers to the ability of a learning algorithm to represent its learned knowledge in a human understandable fashion [9].
+This notion of model comprehensibility stems from the postulates of Michalski [2], which stated that “the results of computer induction should be symbolic descriptions of given entities, semantically and structurally similar to those a human expert might produce observing the same entities.
+Components of these descriptions should be comprehensible as single ‘chunks’ of information, directly interpretable in natural language, and should relate quantitative and qualitative concepts in an integrated fashion”.
+Given its difficult quantification, comprehensibility is normally tied to the evaluation of the model complexity [7].
+•Interpretability: It is defined as the ability to explain or to provide the meaning in understandable terms to a human.
+•Explainability: Explainability is associated with the notion of explanation as an interface between humans and a decision maker that is, at the same time, both an accurate proxy of the decision maker and comprehensible to humans [7].
+•Transparency: A model is considered to be transparent if by itself it is understandable. Since a model can feature different degrees of understandability, transparent models in Section 3 are divided into three categories: simulatable models, decomposable models and algorithmically transparent models [5].
+
+
+In all the above definitions, understandability emerges as the most essential concept in XAI [3].
+Both transparency and interpretability [5] are strongly tied to this concept: while transparency refers to the characteristic of a model to be, on its own, understandable for a human, understandability measures the degree to which a human can understand a decision made by a model. Comprehensibility is also connected to understandability in that it relies on the capability of the audience to understand the knowledge contained in the model. All in all, understandability is a two-sided matter: model understandability and human understandability. This is the reason why the definition of XAI given in Section 2.2 refers to the concept of audience, as the cognitive skills and pursued goal of the users of the model have to be taken into account jointly with the intelligibility and comprehensibility of the model in use. This prominent role taken by understandability makes the concept of audience the cornerstone of XAI, as we next elaborate in further detail.
+
+Although it might be considered to be beyond the scope of this paper, it is worth noting the discussion held around general theories of explanation in the realm of philosophy [3].
+Many proposals have been done in this regard, suggesting the need for a general, unified theory that approximates the structure and intent of an explanation [4].
+However, nobody has stood the critique when presenting such a general theory [9].
+For the time being, the most agreed-upon thought blends together different approaches to explanation drawn from diverse knowledge disciplines.
+A similar problem is found when addressing interpretability in AI [2].
+It appears from the literature that there is not yet a common point of understanding on what interpretability or explainability are.
+However, many contributions claim the achievement of interpretable models and techniques that empower explainability [10].
+
+To shed some light on this lack of consensus, it might be interesting to place the reference starting point at the definition of the term Explainable Artificial Intelligence (XAI) given by D Gunning in [7]:
+“XAI will create a suite of machine learning techniques that enables human users to understand, appropriately trust, and effectively manage the emerging generation of artificially intelligent partners”.
+
+
+This definition brings together two concepts (understanding and trust) that need to be addressed in advance [1].
+However, it misses to consider other purposes motivating the need for interpretable AI models, such as causality, transferability, informativeness, fairness and confidence [5].
+We will later delve into these topics, mentioning them here as a supporting example of the incompleteness of the above definition.
+
+As exemplified by the definition above, a thorough, complete definition of explainability in AI still slips from our fingers.
+A broader reformulation of this definition (e.g. “An explainable Artificial Intelligence is one that produces explanations about its functioning”) would fail to fully characterize the term in question, leaving aside important aspects such as its purpose.
+To build upon the completeness, a definition of explanation is first required.
+
+As extracted from the Cambridge Dictionary of English Language, an explanation is “the details or reasons that someone gives to make something clear or easy to understand” [27].
+In the context of an ML model, this can be rephrased as: “the details or reasons a model gives to make its functioning clear or easy to understand”.
+It is at this point where opinions start to diverge.
+Inherently stemming from the previous definitions, two ambiguities can be pointed out.
+First, the details or the reasons used to explain, are completely dependent of the audience to which they are presented.
+Second, whether the explanation has left the concept clear or easy to understand also depends completely on the audience.
+Therefore, the definition must be rephrased to reflect explicitly the dependence of the explainability of the model on the audience.
+To this end, a reworked definition could read as:
+Given a certain audience, explainability refers to the details and reasons a model gives to make its functioning clear or easy to understand.
+
+
+Since explaining, as argumenting, may involve weighting, comparing or convincing an audience with logic-based formalizations of (counter) arguments [28], explainability might convey us into the realm of cognitive psychology and the psychology of explanations [7], since measuring whether something has been understood or put clearly is a hard task to be gauged objectively.
+However, measuring to which extent the internals of a model can be explained could be tackled objectively.
+Any means to reduce the complexity of the model or to simplify its outputs should be considered as an XAI approach.
+How big this leap is in terms of complexity or simplicity will correspond to how explainable the resulting model is.
+An underlying problem that remains unsolved is that the interpretability gain provided by such XAI approaches may not be straightforward to quantify: for instance, a model simplification can be evaluated based on the reduction of the number of architectural elements or number of parameters of the model itself (as often made, for instance, for DNNs).
+On the contrary, the use of visualization methods or natural language for the same purpose does not favor a clear quantification of the improvements gained in terms of interpretability.
+The derivation of general metrics to assess the quality of XAI approaches remain as an open challenge that should be under the spotlight of the field in forthcoming years.
+We will further discuss on this research direction in Section 5.
+
+Explainability is linked to post-hoc explainability since it covers the techniques used to convert a non-interpretable model into a explainable one.
+In the remaining of this manuscript, explainability will be considered as the main design objective, since it represents a broader concept.
+A model can be explained, but the interpretability of the model is something that comes from the design of the model itself.
+Bearing these observations in mind, explainable AI can be defined as follows:
+Given an audience, an explainable Artificial Intelligence is one that produces details or reasons to make its functioning clear or easy to understand.
+
+
+This definition is posed here as a first contribution of the present overview, implicitly assumes that the ease of understanding and clarity targeted by XAI techniques for the model at hand reverts on different application purposes, such as a better trustworthiness of the model’s output by the audience.
