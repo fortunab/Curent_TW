@@ -1,15 +1,820 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-</head>
-<body>
+<html xmlns="http://www.w3.org/1999/html">
+  <head>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link href="/static/stilul.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link href="/static/boot.css" rel="stylesheet" />
 
-<form method="POST" action="">
-    <p>
-    Bine ati venit pe platforma intellBot TK care va permite sa comunicati prin mesaje cu utilizatori eruditi.
-    De asemenea aveti posibilitatea de a va expanda cunostintele din mai multe domenii conversand cu un CHATBOT.
-    </p>
-</form>
-</body>
+    <link rel="icon" type="image/png" href="/static/media/refbot.jpg">
+    <title></title>
+
+    <style>
+        .userText {
+            color: white;
+            font-family: Arial;
+            font-size: 17px;
+            text-align: right;
+            line-height: 30px;
+        }
+
+        .userText span {
+            background-color: indigo;
+            padding: 10px;
+            border-radius: 15%;
+        }
+
+        .dateText {
+            color: indigo;
+            font-family: "Times New Roman";
+            font-size: 17px;
+            text-align: right;
+            line-height: 30px;
+        }
+
+        .dateText span {
+            background-color: gold;
+            padding: 5px;
+            border-radius: 2px;
+        }
+
+        .botText {
+            color: black;
+            font-family: Arial;
+            font-size: 17px;
+            text-align: left;
+            line-height: 30px;
+        }
+
+        .botText span {
+            background-color: lightgray;
+            padding: 10px;
+            border-radius: 15%;
+        }
+
+        .vertical-center {
+          margin: 0;
+          position: absolute;
+          top: 50%;
+          -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+        }
+
+        .button {
+          background-color: #009688;
+          border: none;
+          color: white;
+          padding: 8px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 10px;
+          margin: 4px 2px;
+        }
+        .button4 {border-radius: 12px;}
+        .button5 {border-radius: 20%;}
+
+        #userInput2 {
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+            margin-top: 60px;
+        }
+        #userInput3 {
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+            margin-top: 60px;
+        }
+
+        #userInput4 {
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+            margin-top: 60px;
+        }
+
+        #userInput5 {
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+            margin-top: 60px;
+        }
+
+        #userInput6 {
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+            margin-top: 60px;
+        }
+
+        #botText_n1 {
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+            margin-top: 60px;
+        }
+
+        .hintText {
+            color: darkgoldenrod;
+            font-family: monospace;
+            font-size: 17px;
+            text-align: left;
+            line-height: 30px;
+        }
+
+        .hintText span {
+            background-color: lightgoldenrodyellow;
+            padding: 10px;
+            border-radius: 2px;
+        }
+
+    </style>
+  </head>
+  <body style="background-color: white;">
+    <form method="POST" action="">
+        <p>
+        Bine ati venit pe platforma intellBot TK care va permite sa comunicati prin mesaje cu utilizatori eruditi.
+        De asemenea aveti posibilitatea de a va expanda cunostintele din mai multe domenii conversand cu un CHATBOT.
+        </p>
+    </form>
+    <div class="align-content-center">
+    <div class="container-fluid">
+      <div id="chatbox">
+          <marquee behavior="scroll" bgcolor="gold" loop="-1" width="30%">
+               <i>
+                  <font color="indigo">
+                    <strong>
+                        Conversation has just started on:
+                     <span id="time"></span>
+                    </strong>
+                  </font>
+               </i>
+          </marquee>
+
+          <div id="textmultiplu" class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"> <span id="messag"></span></p></div>
+          <script>
+            $('#messag').html('XAIBOT is typing...');
+            setTimeout(function(){
+                $('#messag').html('XAIBOT: Hello!');
+                var add = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"> <span id="messag2"></span></p></div>';
+                $('#textmultiplu').append(add);
+                $('#messag2').html('XAIBOT is typing...');
+                setTimeout(function () {
+                    $('#messag2').html("XAIBOT: I'm XAIBOT, Explainable AI virtual assistant.");
+                    var add2 = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"> <span id="messag3"></span></p></div>';
+                    $('#textmultiplu').append(add2);
+                    $('#messag3').html('XAIBOT is typing...');
+                    setTimeout(function () {
+                        $('#messag3').html("XAIBOT: Please, tell me your nickname.");
+                    }, 500);
+                }, 500);
+
+            }, 500);
+          </script>
+
+
+            <div id="message1"></div>
+            <div id="message2"></div>
+            <script type="text/javascript">
+                /*$(document).ready(function() {
+                    $('#btn_2consMess').on('click', function() {
+                        $('#message1').html("XAIBOT is typing...");
+                        setTimeout(function(){
+                            var div1 = document.getElementById("message1");
+                            div1.style.display = "block";
+                            if (div1.style.display !== "block") {
+                                div1.style.display = "block";
+                            }
+                            else {
+                               div1.style.display = "none";
+                            }
+                            $('#message2').html("Buna, cf?");
+                        },2000); //second message will appear 3 seconds later
+                    });
+                });*/
+
+            </script>
+      </div>
+
+      <script>
+          var today = new Date();
+          document.getElementById('time').innerHTML=today;
+      </script>
+
+      <script>
+          var today2 = new Date();
+          document.getElementById('t1').innerHTML=today2;
+        </script>
+
+      <div id="userInput">
+          <div id="textInput_id">
+            <input id="textInput" type="text" name="msg" placeholder="Message">
+          </div>
+          <div id="botText1">
+            <button id="btn_2consMess" onclick="numele()">Send</button>
+          </div>
+      </div>
+
+        <div id="botText_n1"></div>
+
+        <div id="userInput2"></div>
+        <div id="userInput3"></div>
+        <div id="userInput4"></div>
+        <div id="userInput5"></div>
+        <div id="userInput6"></div>
+
+
+      <script>
+
+        function numele() {
+            var datatimp = new Date();
+          var variab = '<p class="dateText"><span>' + datatimp + '</span></p>';
+          $("#chatbox").append(variab);
+          var rawText = $("#textInput").val();
+          var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText + '</span><img src="static/media/user.ico" width="40" height="30"></p>';
+          $("#textInput").val("");
+          $("#chatbox").append(userHtml);
+
+          $.get("/name", { msg: rawText }).done(function(data) {
+            var botHtml = '<p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span id="messages1">' + 'XAIBOT is typing...' + '</span></p>';
+            //$('#messages1').html();
+            setTimeout(function() {
+                $('#messages1').html('XAIBOT: ' + data);
+                var btn1 = '<button id="botText2" class=\'fas fa-comment-alt\' style=\'font-size:20px;color:indigo\' value="Optiune1" onclick="versiune1()">About XAI and your sapiens. </button>';
+                  var btn2 = '<button id="botText3" class=\'fas fa-comment-alt\' style=\'font-size:20px;color:indigo\' value="Optiune2" onclick="versiune2()">I want you to detect references. </button>';
+                  $("#userInput2").append(btn1);
+                  $("#userInput2").append(btn2);
+            }, 500);
+
+            $("#chatbox").append(botHtml);
+          });
+
+
+          var div1 = document.getElementById("textInput_id");
+          div1.style.display = "block";
+              if (div1.style.display !== "block") {
+                  div1.style.display = "block";
+              }
+              else {
+                  div1.style.display = "none";
+              }
+          var div1 = document.getElementById("botText1");
+          div1.style.display = "block";
+              if (div1.style.display !== "block") {
+                  div1.style.display = "block";
+              }
+              else {
+                  div1.style.display = "none";
+              }
+
+        }
+      </script>
+      <script>
+         function versiune1() {
+             var datatimp = new Date();
+          var variab = '<p class="dateText"><span>' + datatimp + '</span></p>';
+          $("#chatbox").append(variab);
+          var rawText1 = "About XAI and your sapiens.";
+          var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText1 + '</span><img src="static/media/user.ico" width="40" height="30"></p>';
+          $("#textInput").val("");
+          $("#chatbox").append(userHtml);
+
+          var raspuns = '<div id="textmultiplu" class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span id="messages2">' + 'XAIBOT is typing...' + '</span></p></div>';
+             setTimeout(function() {
+               $('#messages2').html('XAIBOT: Perfect!');
+               var add = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"> <span id="messages21">' + 'XAIBOT is typing...' + '</span></p></div>';
+                $('#chatbox').append(add);
+                setTimeout(function () {
+                    $('#messages21').html('XAIBOT: Let me ask you, what do you do?');
+                    var btn1 = '<button id="botText4" class=\'fas fa-comment-alt\' style=\'font-size:20px;color:indigo\' value="Optiune3" onclick="conv1()">I am a student. </button>';
+                      var btn2 = '<button id="botText5" class=\'fas fa-comment-alt\' style=\'font-size:20px;color:indigo\' value="Optiune4" onclick="conv2()">I work for a company/ in institution. </button>';
+                      var btn3 = '<button id="botText6" class=\'fas fa-comment-alt\' style=\'font-size:20px;color:indigo\' value="Optiune5" onclick="conv3()">I am a freelancer. </button>';
+                      $("#userInput2").append(btn1);
+                      $("#userInput2").append(btn2);
+                      $("#userInput2").append(btn3);
+               }, 500);
+          }, 500);
+          $("#chatbox").append(raspuns);
+
+          var div1 = document.getElementById("botText2");
+          div1.style.display = "block";
+              if (div1.style.display !== "block") {
+                  div1.style.display = "block";
+              }
+              else {
+                  div1.style.display = "none";
+              }
+          var div1 = document.getElementById("botText3");
+          div1.style.display = "block";
+              if (div1.style.display !== "block") {
+                  div1.style.display = "block";
+              }
+              else {
+                  div1.style.display = "none";
+              }
+
+        }
+
+         function versiune2() {
+          var datatimp = new Date();
+          var variab = '<p class="dateText"><span>' + datatimp + '</span></p>';
+          $("#chatbox").append(variab);
+          var rawText1 = "I want you to detect references.";
+          var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText1 + '</span><img src="static/media/user.ico" width="40" height="30"></p>';
+          $("#textInput").val("");
+          $("#chatbox").append(userHtml);
+
+          var raspuns = '<div id="textmultiplu" class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span id="messages3">' + 'XAIBOT is typing...' + '</span></p></div>';
+             setTimeout(function() {
+               $('#messages3').html('XAIBOT: That is cool! I will do it.');
+               var add = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"> <span id="messages31">' + 'XAIBOT is typing...' + '</span></p></div>';
+                $('#chatbox').append(add);
+                setTimeout(function () {
+                    $('#messages31').html('XAIBOT: Are you ready?');
+                    var hint1 = '<p class="hintText"><span>' + 'Hint: type YES or NO' + '</span></p>';
+                    $("#chatbox").append(hint1);
+               }, 500);
+          }, 500);
+          $("#chatbox").append(raspuns);
+
+          var div1 = document.getElementById("botText2");
+          div1.style.display = "block";
+              if (div1.style.display !== "block") {
+                  div1.style.display = "block";
+              }
+              else {
+                  div1.style.display = "none";
+              }
+
+          var div1 = document.getElementById("botText3");
+          div1.style.display = "block";
+              if (div1.style.display !== "block") {
+                  div1.style.display = "block";
+              }
+              else {
+                  div1.style.display = "none";
+              }
+
+          var div1 = document.getElementById("textInput_id");
+          div1.style.display = "none";
+              if (div1.style.display !== "block") {
+                  div1.style.display = "block";
+              }
+              else {
+                  div1.style.display = "none";
+              }
+
+          var btnref = '<button onclick="ref1()">Send</button>';
+          $("#botText_n1").append(btnref);
+
+        }
+
+        function conv1() {
+             var datatimp = new Date();
+          var variab = '<p class="dateText"><span>' + datatimp + '</span></p>';
+          $("#chatbox").append(variab);
+          var rawText1 = "I am a student.";
+          var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText1 + '</span><img src="static/media/user.ico" width="40" height="30"></p>';
+          $("#textInput").val("");
+          $("#chatbox").append(userHtml);
+
+          var raspuns = '<p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span id="messages4">' + 'XAIBOT is typing...' + '</span></p>';
+            setTimeout(function(){
+                $('#messages4').html('XAIBOT: Wow! Nice. But, is it hard to study?');
+                var add = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"> <span id="messages42"></span></p></div>';
+                $('#chatbox').append(add);
+                $('#messages42').html('XAIBOT is typing...');
+                setTimeout(function () {
+                    $('#messages42').html('XAIBOT: Listen. I am glad! But I want to start.');
+                    var add2 = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"> <span id="messages43"></span></p></div>';
+                    $('#chatbox').append(add2);
+                    $('#messages43').html('XAIBOT is typing...');
+                    setTimeout(function () {
+                        $('#messages43').html('XAIBOT: Are you ready?');
+                        var hint1 = '<p class="hintText"><span>' + 'Hint: type YES or NO' + '</span></p>';
+                        $("#chatbox").append(hint1);
+                    }, 500);
+                }, 500);
+
+            }, 500);
+          $("#chatbox").append(raspuns);
+
+          var div1 = document.getElementById("textInput_id");
+          div1.style.display = "none";
+              if (div1.style.display !== "block") {
+                  div1.style.display = "block";
+              }
+              else {
+                  div1.style.display = "none";
+              }
+
+          var div1 = document.getElementById("userInput2");
+          div1.style.display = "block";
+              if (div1.style.display !== "none") {
+                  div1.style.display = "none";
+              }
+              else {
+                  div1.style.display = "block";
+              }
+
+            var noubtn = '<button onclick="discutie()">Send</button>';
+            $("#userInput3").append(noubtn);
+        }
+
+        function conv2() {
+             var datatimp = new Date();
+          var variab = '<p class="dateText"><span>' + datatimp + '</span></p>';
+          $("#chatbox").append(variab);
+          var rawText1 = "I work for a company/ in institution.";
+          var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText1 + '</span><img src="static/media/user.ico" width="40" height="30"></p>';
+          $("#textInput").val("");
+          $("#chatbox").append(userHtml);
+
+          var raspuns = '<p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span id="messages5">' + 'XAIBOT is typing...' + '</span></p>';
+            setTimeout(function(){
+                $('#messages5').html('XAIBOT: Very well. Is it a company/institution with big quality and a lot of opportunity?');
+                var add = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"> <span id="messages52"></span></p></div>';
+                $('#chatbox').append(add);
+                $('#messages52').html('XAIBOT is typing...');
+                setTimeout(function () {
+                    $('#messages52').html('XAIBOT: Listen. I am glad! But I want to start.');
+                    var add2 = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"> <span id="messages53"></span></p></div>';
+                    $('#chatbox').append(add2);
+                    $('#messages53').html('XAIBOT is typing...');
+                    setTimeout(function () {
+                        $('#messages53').html('XAIBOT: Are you ready?');
+                        var hint1 = '<p class="hintText"><span>' + 'Hint: type YES or NO' + '</span></p>';
+                        $("#chatbox").append(hint1);
+                    }, 500);
+                }, 500);
+
+            }, 500);
+          $("#chatbox").append(raspuns);
+
+          var div1 = document.getElementById("textInput_id");
+          div1.style.display = "none";
+              if (div1.style.display !== "block") {
+                  div1.style.display = "block";
+              }
+              else {
+                  div1.style.display = "none";
+              }
+
+          var div1 = document.getElementById("userInput2");
+          div1.style.display = "block";
+              if (div1.style.display !== "none") {
+                  div1.style.display = "none";
+              }
+              else {
+                  div1.style.display = "block";
+              }
+
+            var noubtn = '<button onclick="discutie()">Send</button>';
+            $("#userInput3").append(noubtn);
+        }
+
+        function conv3() {
+          var datatimp = new Date();
+          var variab = '<p class="dateText"><span>' + datatimp + '</span></p>';
+          $("#chatbox").append(variab);
+          var rawText1 = "I am a freelancer.";
+          var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText1 + '</span><img src="static/media/user.ico" width="40" height="30"></p>';
+          $("#textInput").val("");
+          $("#chatbox").append(userHtml);
+
+          var raspuns = '<p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span id="messages6">' + 'XAIBOT is typing...' + '</span></p>';
+            setTimeout(function(){
+                $('#messages6').html('XAIBOT: Very nice! How is it going?');
+                var add = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"> <span id="messages62"></span></p></div>';
+                $('#chatbox').append(add);
+                $('#messages62').html('XAIBOT is typing...');
+                setTimeout(function () {
+                    $('#messages62').html('XAIBOT: Listen. I am glad! But I want to start.');
+                    var add2 = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"> <span id="messages63"></span></p></div>';
+                    $('#chatbox').append(add2);
+                    $('#messages63').html('XAIBOT is typing...');
+                    setTimeout(function () {
+                        $('#messages63').html('XAIBOT: Are you ready?');
+                        var hint1 = '<p class="hintText"><span>' + 'Hint: type YES or NO' + '</span></p>';
+                        $("#chatbox").append(hint1);
+                    }, 500);
+                }, 500);
+
+            }, 500);
+          $("#chatbox").append(raspuns);
+
+          var div1 = document.getElementById("textInput_id");
+          div1.style.display = "none";
+              if (div1.style.display !== "block") {
+                  div1.style.display = "block";
+              }
+              else {
+                  div1.style.display = "none";
+              }
+
+          var div1 = document.getElementById("userInput2");
+          div1.style.display = "block";
+              if (div1.style.display !== "none") {
+                  div1.style.display = "none";
+              }
+              else {
+                  div1.style.display = "block";
+              }
+
+            var noubtn = '<button onclick="discutie()">Send</button>';
+            $("#userInput3").append(noubtn);
+        }
+
+        function discutie() {
+            var datatimp = new Date();
+            var variab = '<p class="dateText"><span>' + datatimp + '</span></p>';
+            $("#chatbox").append(variab);
+            var rawText = $("#textInput").val();
+            var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText + '</span><img src="static/media/user.ico" width="40" height="30"></p>';
+            $("#textInput").val("");
+            $("#chatbox").append(userHtml);
+
+            $.get("/discut", {msg: rawText}).done(function (data) {
+                var botHtml = '<p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span id="messages10a">' + 'XAIBOT is typing...' + '</span></p>';
+                setTimeout(function() {
+                    $('#messages10a').html('XAIBOT: ' + data);
+                    if(rawText.toLowerCase().localeCompare("yes")!=0){
+                    var noubtn_da = '<button onclick="decizie_finala()">Send</button>';
+                    $("#userInput4").append(noubtn_da);
+
+                    var div1 = document.getElementById("userInput3");
+                    div1.style.display = "block";
+                      if (div1.style.display !== "none") {
+                          div1.style.display = "none";
+                      }
+                      else {
+                          div1.style.display = "block";
+                      }
+                }
+                else{
+                    var div1 = document.getElementById("userInput3");
+                    div1.style.display = "block";
+                      if (div1.style.display !== "none") {
+                          div1.style.display = "none";
+                      }
+                      else {
+                          div1.style.display = "block";
+                      }
+
+                    var noubtnn = '<button onclick="discutie_noua()">Send</button>';
+                    $("#userInput6").append(noubtnn);
+                }
+                }, 500);
+
+                $("#chatbox").append(botHtml);
+            });
+        }
+
+        function decizie_finala() {
+          var datatimp = new Date();
+          var variab = '<p class="dateText"><span>' + datatimp + '</span></p>';
+          $("#chatbox").append(variab);
+            var rawText = $("#textInput").val();
+            var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText + '</span><img src="static/media/user.ico" width="40" height="30"></p>';
+            $("#textInput").val("");
+            $("#chatbox").append(userHtml);
+
+            if(rawText.toLowerCase().localeCompare("yes")!=0){
+                var botHtml = '<p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span id="messages11a">' + 'XAIBOT is typing...' + '</span></p>';
+                setTimeout(function() {
+                    $('#messages11a').html('XAIBOT: Here, the conversation is over. For more results, please restart the application or meet Diogen and Flavia personally. Goodbye!');
+                    var div1 = document.getElementById("userInput4");
+                    div1.style.display = "block";
+                    if (div1.style.display !== "none") {
+                        div1.style.display = "none";
+                    } else {
+                        div1.style.display = "block";
+                    }
+
+                    var div1 = document.getElementById("textInput_id");
+                    div1.style.display = "block";
+                    if (div1.style.display !== "none") {
+                        div1.style.display = "none";
+                    } else {
+                        div1.style.display = "block";
+                    }
+                }, 1000);
+                $("#chatbox").append(botHtml);
+            }
+            else{
+                var div1 = document.getElementById("userInput3");
+                div1.style.display = "block";
+                  if (div1.style.display !== "none") {
+                      div1.style.display = "none";
+                  }
+                  else {
+                      div1.style.display = "block";
+                  }
+
+                var div1 = document.getElementById("userInput4");
+                div1.style.display = "block";
+                  if (div1.style.display !== "none") {
+                      div1.style.display = "none";
+                  }
+                  else {
+                      div1.style.display = "block";
+                  }
+
+                $.get("/discut", {msg: rawText}).done(function (data) {
+                    var botHtml = '<p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span id="messages12">' + 'XAIBOT is typing...' + '</span></p>';
+                    setTimeout(function() {
+                        $('#messages12').html('XAIBOT: ' + data);
+
+                    }, 2000);
+                    $("#chatbox").append(botHtml);
+                    var noubtnn = '<button onclick="discutie_noua()">Send</button>';
+                    $("#userInput6").append(noubtnn);
+                });
+            }
+        }
+
+        function decizie_finala2() {
+             var datatimp = new Date();
+          var variab = '<p class="dateText"><span>' + datatimp + '</span></p>';
+          $("#chatbox").append(variab);
+            var rawText = $("#textInput").val();
+            var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText + '</span><img src="static/media/user.ico" width="40" height="30"></p>';
+            $("#textInput").val("");
+            $("#chatbox").append(userHtml);
+
+            if(rawText.toLowerCase().localeCompare("yes")!=0){
+                var botHtml = '<p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span id="messages11a">' + 'XAIBOT is typing...' + '</span></p>';
+                setTimeout(function() {
+                    $('#messages11a').html('XAIBOT: Here, the conversation is over. For more results, please restart the application or meet Diogen and Flavia personally. Goodbye!');
+                    var div1 = document.getElementById("userInput4");
+                div1.style.display = "block";
+                  if (div1.style.display !== "none") {
+                      div1.style.display = "none";
+                  }
+                  else {
+                      div1.style.display = "block";
+                  }
+
+                var div1 = document.getElementById("textInput_id");
+                div1.style.display = "block";
+                  if (div1.style.display !== "none") {
+                      div1.style.display = "none";
+                  }
+                  else {
+                      div1.style.display = "block";
+                  }
+                }, 3000);
+                $("#chatbox").append(botHtml);
+            }
+            else{
+                var div1 = document.getElementById("userInput3");
+                div1.style.display = "block";
+                  if (div1.style.display !== "none") {
+                      div1.style.display = "none";
+                  }
+                  else {
+                      div1.style.display = "block";
+                  }
+
+                var div1 = document.getElementById("userInput4");
+                div1.style.display = "block";
+                  if (div1.style.display !== "none") {
+                      div1.style.display = "none";
+                  }
+                  else {
+                      div1.style.display = "block";
+                  }
+
+                $.get("/discut_modif", {msg: rawText}).done(function (data) {
+                    var botHtml = '<p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span id="messages12">' + 'XAIBOT is typing...' + '</span></p>';
+                    setTimeout(function() {
+                        $('#messages12').html('XAIBOT: ' + data);
+
+                    }, 4000);
+                    $("#chatbox").append(botHtml);
+                    var noubtnn = '<button onclick="discutie_ref1()()">Send</button>';
+                    $("#userInput5").append(noubtnn);
+                });
+            }
+        }
+
+        function discutie_noua() {
+             var datatimp = new Date();
+            var variab = '<p class="dateText"><span>' + datatimp + '</span></p>';
+            $("#chatbox").append(variab);
+            var rawText = $("#textInput").val();
+            var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText + '</span><img src="static/media/user.ico" width="40" height="30"></p>';
+            $("#textInput").val("");
+            $("#chatbox").append(userHtml);
+            $.get("/get", {msg: rawText}).done(function (data) {
+                var botHtml = '<p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span>' + 'XAIBOT: ' + data + '</span></p>';
+                $("#chatbox").append(botHtml);
+            });
+            if(rawText.toLowerCase().localeCompare("exit")==0){
+                var div1 = document.getElementById("userInput6");
+                div1.style.display = "block";
+                  if (div1.style.display !== "block") {
+                      div1.style.display = "block";
+                  }
+                  else {
+                      div1.style.display = "none";
+                  }
+
+                var div1 = document.getElementById("textInput_id");
+                div1.style.display = "block";
+                  if (div1.style.display !== "none") {
+                      div1.style.display = "none";
+                  }
+                  else {
+                      div1.style.display = "block";
+                  }
+            }
+        }
+
+        function ref1() {
+             var datatimp = new Date();
+             var variab = '<p class="dateText"><span>' + datatimp + '</span></p>';
+            $("#chatbox").append(variab);
+            var rawText = $("#textInput").val();
+            var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText + '</span><img src="static/media/user.ico" width="40" height="30"></p>';
+            $("#textInput").val("");
+            $("#chatbox").append(userHtml);
+
+            $.get("/discut_modif", {msg: rawText}).done(function (data) {
+                var botHtml = '<p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span>' + 'XAIBOT: ' + data + '</span></p>';
+                $("#chatbox").append(botHtml);
+
+            });
+
+            if(rawText.toLowerCase().localeCompare("yes")!=0){
+                var noubtn_da = '<button onclick="decizie_finala2()">Send</button>';
+                $("#userInput4").append(noubtn_da);
+
+                var div1 = document.getElementById("botText_n1");
+                div1.style.display = "block";
+                  if (div1.style.display !== "none") {
+                      div1.style.display = "none";
+                  }
+                  else {
+                      div1.style.display = "block";
+                  }
+            }
+            else{
+                var div1 = document.getElementById("botText_n1");
+                div1.style.display = "block";
+                  if (div1.style.display !== "none") {
+                      div1.style.display = "none";
+                  }
+                  else {
+                      div1.style.display = "block";
+                  }
+
+                var noubtnn = '<button onclick="discutie_ref1()">Send</button>';
+                $("#userInput5").append(noubtnn);
+            }
+        }
+
+        function discutie_ref1() {
+             var datatimp = new Date();
+              var variab = '<p class="dateText"><span>' + datatimp + '</span></p>';
+              $("#chatbox").append(variab);
+            var rawText = $("#textInput").val();
+            var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText + '</span><img src="static/media/user.ico" width="40" height="30"></p>';
+            $("#textInput").val("");
+            $("#chatbox").append(userHtml);
+
+            $.get("/detectare", {msg: rawText}).done(function (data) {
+                var botHtml = '<p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span>' + 'XAIBOT: ' + data + '</span></p>';
+                $("#chatbox").append(botHtml);
+            });
+
+            if (rawText.toLowerCase().localeCompare("q")==0){
+
+
+                var div1 = document.getElementById("userInput5");
+                div1.style.display = "block";
+                  if (div1.style.display !== "none") {
+                      div1.style.display = "none";
+                  }
+                  else {
+                      div1.style.display = "block";
+                  }
+
+                var div1 = document.getElementById("textInput_id");
+                div1.style.display = "block";
+                  if (div1.style.display !== "none") {
+                      div1.style.display = "none";
+                  }
+                  else {
+                      div1.style.display = "block";
+                  }
+            }
+        }
+      </script>
+    </div>
+    </div>
+
+  </body>
 </html>

@@ -1,20 +1,48 @@
-<div class="sidebar" data-image="../../static/img/proba1.jpg" data-color="indigo">
+<div class="sidebar" data-image="../../static/assets/img/proba1.jpg" data-color="indigo">
     <div class="sidebar-wrapper" align="center" style="width: 200px">
         <div class="logo" align="center">
             Menu
         </div>
         {% if current_user.is_authenticated %}
         <ul class="nav">
-            <li class="nav-item active">
+            <li class="nav-item">
+                <a class="nav-link" href="/home.html">
+                    <i class="nc-icon nc-align-center"></i>
+                    <p>Home</p>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/user.html">
                     <i class="nc-icon nc-circle-09"></i>
                     <p>Profile</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/index.html">
+                    <i class="nc-icon nc-album-2"></i>
+                    <p>Group Chat</p>
                 </a>
             </li>
             <li>
                 <a class="nav-link" href={{url_for('logout')}}>
                     <i class="nc-icon nc-single-02"></i>
                     <p>Logout</p>
+                </a>
+            </li>
+        </ul>
+        {% endif %}
+        {% if not current_user.is_authenticated %}
+        <ul class="nav">
+            <li>
+                <a class="nav-link" href={{url_for('login')}}>
+                    <i class="nc-icon nc-single-02"></i>
+                    <p>Login</p>
+                </a>
+            </li>
+            <li>
+                <a class="nav-link" href={{url_for('register')}}>
+                    <i class="nc-icon nc-bullet-list-67"></i>
+                    <p>Register</p>
                 </a>
             </li>
         </ul>

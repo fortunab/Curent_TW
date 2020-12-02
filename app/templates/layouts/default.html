@@ -3,7 +3,11 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="/static/img/icon.ico">
+    <link rel="icon" type="image/png" href="/static/assets/img/icon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     {% if title %}    
         <title>{{ title }}</title>
     {% else %}
@@ -15,12 +19,13 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/static/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/static/assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
-    <link href="/static/css/stil.css" rel="stylesheet" />
+    <link href="/static/assets/css/demo.css" rel="stylesheet" />
 </head>
 
 <body>
+<div class="container-fluid">
     <div class="bar-lateral">
         {% include 'includes/sidebar.html' %}
         <div class="main-panel">
@@ -29,6 +34,8 @@
             {% include 'includes/footer.html' %}
         </div>
     </div>
+</div>
 </body>
 {% include 'includes/scripts.html' %}
+
 </html>

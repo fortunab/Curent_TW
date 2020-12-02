@@ -14,5 +14,14 @@ class RegisterForm(FlaskForm):
 	password = PasswordField(u'Password', validators=[DataRequired(), Length(min=6, message='Select a stronger password.')])
 
 class FriendForm(FlaskForm):
+	name_fr = StringField(u'NameFr', validators=[DataRequired()])
 	username_friend = StringField(u'username_friend', validators=[DataRequired()])
 	username_fk = StringField(u'username_fk', validators=[DataRequired()])
+
+class ConnectChatForm(FlaskForm):
+	user_pers1 = StringField(u'UserPers1', validators=[DataRequired()])
+	user_pers2 = StringField(u'UserPers1', validators=[DataRequired()])
+
+class MessageForm(FlaskForm):
+	username_mes = StringField(u'username_mes', validators=[DataRequired()])
+	text_mes = StringField(u'text_mes', validators=[DataRequired()])

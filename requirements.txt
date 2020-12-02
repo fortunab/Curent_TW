@@ -6,3 +6,4 @@ wtforms
 flask_sqlalchemy
 flask_bcrypt
 email_validator
+flask_socketio

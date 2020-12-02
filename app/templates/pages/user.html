@@ -59,6 +59,23 @@
   display: table;
   clear: both;
 }
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 50%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
 </style>
 </head>
 <body>
@@ -69,6 +86,12 @@
                         <div class="card-image" style="background-color: #7b38d8;">
                              <img src="../../static/assets/img/1.jpg" alt="...">
                         </div>
+
+                        {% if msg %}
+                            <p>{{ msg | safe }}</p>
+                        {% endif %}
+
+
 
                     <ol id="demo"></ol>
                         <div class="author">
@@ -91,6 +114,11 @@
                             <div style="font-size: 20px">
                                 {% if current_user.is_authenticated %}
                                 Salut, {{ current_user.name }}!
+
+                                {% endif %}
+                                {% if username_friend %}
+                                    <p>L-ati adaugat pe {{ username_friend | safe }} cu succes in lista cu prieteni! </p>
+                                    <p>Dati <a href="user.html"> refresh </a>pentru a vizualiza noua lista. </p>
                                 {% endif %}
                             </div>
 
@@ -105,13 +133,22 @@
                     <div id="unhide">
                         <div align="center">
                             <div class="form-group">
-                                <label id="lip">Username: </label>
-                                {{ form.username_friend(placeholder="username") }}
+                                <label id="lip">Cautati dupa username: </label>
+                                {{ form.username_friend(placeholder="Username") }}
+                                <br>
+                                <label>Introduceti o porecla: </label>
+                                {{ form.name_fr(placeholder="Nickname") }}
+
+
                                 <div hidden> <!--strict jinja, hidden automat ascunde-->
                                     {% if current_user.is_authenticated %}
                                         {{ form.username_fk(value=current_user.username) }}
+                                        {{ formc.user_pers1(value=current_user.username) }}
+                                        {{ formc.user_pers2(value=form.username_friend) }}
                                     {% endif %}
+
                                 </div>
+
                             </div>
                         </div>
 
@@ -119,29 +156,80 @@
 
                         <script>
                             function funcadd(){
-                                var username_friend = document.getElementById("textfield2");
-                                var output = username_friend.value;
+                                var username_friend = document.getElementById("bon")
+                                var output = name_fr.value
                                 document.getElementById("demo").innerHTML = output;
-                                //document.getElementById("unhide").style.display = "none";
                                 username_friend.value = "";
+                                name_fr.value = "";
                             }
                         </script>
-                    <div align="center" style="margin-top: 30px">
-                                {% for s in server %}
-                                {% if s.username_fk==current_user.username %}
+
+                        <script>
+                            function returnamUsernameFriend() {
+                                var user_friend = username_friend.value;
+                                return user_friend;
+                            }
+
+                            document.getElementById("demo1").innerHTML = returnamUsernameFriend();
+                        </script>
+
+
+                    </div>
+                <div align="center" style="margin-top: 30px">
+                <table>
+                        <tr>
+                            <th>Nickname</th>
+                            <th>Delete</th>
+                        </tr>
+                      {% for s in server %}
+                            {% if s.username_fk==current_user.username %}
+                                <tr>
                                 <ol id="sterg">
-                                {{ s.username_friend }}
+                                    <div class="form-group" id="txtUserFriend">
+                                        <div hidden>
+                                            {{ s.username_friend }}
+
+                                        </div>
+                                    </div>
+                                    <td><a href="/{{ current_user.username }}-{{s.username_friend}}">{{ s.name_fr }}</a></td>
                                 <td align="center">
                                     <form method="POST" action="./sters" style="display: inline">
                                       <input type="hidden" value="{{s.username_friend}}" name="username_friend">
-                                      <input type="submit" value="Delete" style="background-color: #7b38d8;border-radius: 8px;color: white; border: 4px double #cccccc;cursor: pointer; opacity: 50%">
+                                      <input type="submit" value="X" style="background-color: #7b38d8;border-radius: 8px;color: white; border: 4px double #cccccc;cursor: pointer; opacity: 50%">
                                     </form>
                                 </td>
-                            </ol>
+                                </ol>
+                                </tr>
+
                             {% endif %}
-                            {% endfor %}
-                        </div>
-                    </div>
+                      {% endfor %}
+                </table>
+                <a href="index.html">
+                      Intrati pe chat-ul de grup care se desfasoara in timp real.
+                </a>
+
+
+                </div>
+
+                <script>
+                    var usernPastrare = {{ username_friend }};
+                    var myInput = document.getElementById("txtUserFriend");
+                    function funcadd(){
+                                var username_friend = document.getElementById("textfield2");
+                                var output = name_fr.value + " " + lastname_fr.value;
+                                document.getElementById("demo").innerHTML = output;
+                                username_friend.value = "";
+                                name_fr.value = "";
+                                lastname_fr.value = "";
+                                if(myInput.value.length < 6){
+                                    alert("Va rugam sa introduceti o parola mai lunga")
+                                }
+                                if(usernPastrare.value != myInput.value){
+                                    alert("Username-ul nu exista in baza de date")
+                                }
+                    }
+                </script>
+
                 </form>
             </div>
 
