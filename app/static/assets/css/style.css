@@ -2,12 +2,14 @@ html, body {
   height: 100%;
   min-height: 100%;
   margin: 0;
+  font-family: Roboto;
 }
 
 body {
   display: flex;
   flex-direction: column;
   padding: 0px;
+  font-family: Roboto;
 }
 
 header, footer {
@@ -21,7 +23,7 @@ header {
   height: 7em;
   width: auto;
   text-align: center;
-  background: linear-gradient(90deg, #FD6F46 10%, #FB9832 90%);
+  /*background: linear-gradient(90deg, #FD6F46 10%, #FB9832 90%);*/
 }
 
 header > h1 {
@@ -40,7 +42,7 @@ footer {
   display:table;
   text-align: center;
   bottom: 0;
-  background: linear-gradient(90deg, #FD6F46 10%, #FB9832 90%);
+  background: white;
 }
 
 footer > h5 {
@@ -65,7 +67,6 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(90deg, #FD6F46 10%, #FB9832 90%);
 }
 
 .loginForm {
@@ -108,7 +109,7 @@ a {
 .loginForm > input:focus {
   background-color: white;
   width: 18em;
-  color: #FD6F46;
+  color: #7b38d8;
 }
 
 #loginUsernameText {
@@ -136,7 +137,7 @@ a {
   margin-left: 2.5em;
   margin-right: 0.5em;
   padding: 0.5em 0.7em;
-  color: #FD6F46;
+  color: #7b38d8;
   width: 7em;
   cursor: pointer;
   font-size: 1.2em;
@@ -157,7 +158,7 @@ a {
   margin-left: 0.5em;
   margin-right: 2.5em;
   padding: 0.5em 0.7em;
-  color: #FD6F46;
+  color: #7b38d8;
   width: 7em;
   cursor: pointer;
   font-size: 1.2em;
@@ -207,7 +208,7 @@ a {
 .chatUserListHeader > p {
   text-align: center;
   font-family: 'Lato', sans-serif;
-  color: #FD6F46;
+  color: #7b38d8;
   font-size: 1em;
 }
 
@@ -229,7 +230,7 @@ a {
 }
 
 .profilePic {
-  order: 1
+  order: 1;
   display: block;
   margin-left: 2.5em;
   height: 5em;
@@ -239,7 +240,7 @@ a {
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
-  border: 0.1em solid #FD6F46;
+  border: 0.1em solid rebeccapurple;
   box-shadow: 0 0.8em 1.3em rgba(0, 0, 0, 0.3);
 }
 
@@ -260,7 +261,7 @@ a {
 .chatUser h3, h4 {
   margin: 0em;
   text-align: left;
-  color: #FD6F46;
+  color: #7b38d8;
   font-weight: 200;
 }
 
@@ -281,7 +282,7 @@ a {
 .endChatUserList > p {
   text-align: center;
   font-family: 'Lato', sans-serif;
-  color: #FD6F46;
+  color: #7b38d8;
   font-size: 1em;
 }
 
@@ -352,7 +353,7 @@ a {
   font-weight: bold;
   font-size: 1em;
   padding-left: 1.5em;
-  color: #FD6F46;
+  color: #7b38d8;
 }
 
 .timeStamp {
@@ -383,7 +384,7 @@ a {
 .conversationHeader > p {
   text-align: center;
   font-family: 'Lato', sans-serif;
-  color: #FD6F46;
+  color: #7b38d8;
   font-size: 1em;
 }
 
@@ -400,7 +401,7 @@ a {
 .endConversation > p {
   text-align: center;
   font-family: 'Lato', sans-serif;
-  color: #FD6F46;
+  color: #7b38d8;
   font-size: 1em;
 }
 
@@ -450,14 +451,14 @@ a {
   font-weight: 100;
   height: 100%;
   width: 100%;
-  color: #FD6F46;
+  color: #7b38d8;
   background: none;
   border: none;
   padding: 0;
 }
 
 #sendBtn:hover {
-  background: #FB9832;
+  background: #7b38d8;
   color: white;
   border-bottom: 0.1em solid white;
 }
@@ -521,11 +522,11 @@ a {
 
 .container {
   /*align-items: center;*/
-  background: linear-gradient(90deg, #FD6F46 10%, #FB9832 90%);
+ /* background: linear-gradient(90deg, #FD6F46 10%, #FB9832 90%);*/
 }
 
 .apiContainer {
-  background: linear-gradient(90deg, #FD6F46 10%, #FB9832 90%);
+ /* background: linear-gradient(90deg, #FD6F46 10%, #FB9832 90%);*/
   overflow: scroll;
   padding-left: 3em;
 }
@@ -535,7 +536,7 @@ a {
   font-family: 'Lato', sans-serif;
   font-size: 1.5em;
   font-weight: 100;
-  background: linear-gradient(90deg, #FD6F46 10%, #FB9832 90%);
+ /* background: linear-gradient(90deg, #FD6F46 10%, #FB9832 90%);*/
   text-align: center;
 };
 
@@ -606,28 +607,28 @@ a {
 
 
 *::-webkit-input-placeholder {
-    color: #FD6F46;
+    color: #7b38d8;
     font-weight: 100;
     font-family: 'Lato', sans-serif;
 
 
 }
 *:-moz-placeholder {
-    color: #FD6F46;
+    color: #7b38d8;
     font-weight: 100;
     font-family: 'Lato', sans-serif;
 
 
 }
 *::-moz-placeholder {
-    color: #FD6F46;
+    color: #7b38d8;
     font-weight: 100;
     font-family: 'Lato', sans-serif;
 
 
 }
 *:-ms-input-placeholder {
-    color: #FD6F46;
+    color: #7b38d8;
     font-weight: 100;
     font-family: 'Lato', sans-serif;
 

@@ -1,6 +1,5 @@
 {% extends "/layouts/layout.html" %}
 {% block body %}
-
 <!DOCTYPE html>
   <html lang="ro">
   <head>
@@ -11,42 +10,53 @@
           background-color: transparent;
           text-decoration: none;
         }
+div.cls3 {
+  height: 400px;
+  overflow: scroll;
+}
     </style>
   </head>
 <body>
+<div style="height: 70%">
 <div class="logoutContainer">
     </br>
     <p>Hei, <a href="user.html">{{current_user.name}}!</a></p>
 </div>
 <div class="chatContainer">
   <div class="chatUserList">
-    <div class="chatUserListHeader">
-        <p>Lista de prieteni</p>
-        <div class="userInfo">
+    <div class="conversationHeader">
+        <div style="margin-top: 5px;margin-bottom: 5px;color: #7b38d8; font-size: 20px" align="center">
+            <b>Lista prieteni</b>
+        </div>
+      </div>
+
+        <div>
             {% for f in friend %}
                 {% if f.username_fk==current_user.username %}
                   <a href="/{{ current_user.username }}-{{f.username_friend}}">
-                  <p>{{ f.name_fr }}</p>
+                    <div style="margin-top: 2px;margin-bottom: 2px;color: black; font-size: 16px" align="center">
+                        {{ f.name_fr }}
+                    </div>
                   </a>
                 {% endif %}
             {% endfor %}
         </div>
     </div>
-
-  </div>
   <div class="conversation">
     <div class="conversationHistory" id="conversationHistory">
       <div class="conversationHeader">
-        <p>Mesaje</p>
+        <div style="margin-top: 5px;margin-bottom: 5px;color: #7b38d8; font-size: 20px" align="center">
+            <b>Mesaje</b>
+        </div>
       </div>
       <div id="messageList">
-
+      <div class="cls3">
         {% for m in messages %}
         <ol id="demo">
             <div class="messageFlex">
-              <div class="messageFlexCol1">
-                <div class="messageSender">
-                    <img src="static/media/user.ico" width="40" height="30"><strong>{{ m.username_mes }}</strong>: {{ m.text_mes }}
+              <div >
+                <div >
+                    <img src="static/media/user.ico" width="40" height="30"><strong style="margin-left: 12px;color: #7b38d8">{{ m.username_mes }}</strong>: {{ m.text_mes }}
                 </div>
                 <div class="timeStamp" id="timeStamp"><i>{{ m.dateTime }}</i></div>
 
@@ -54,21 +64,19 @@
             </div>
         </ol>
 
-
     {% endfor %}
       {% for fc in fisiere %}
             fisierele:{{ fc.name_fc | safe }}....... {{ fc.data_fc |safe }}
         {% endfor %}
-
-    <div class="container">
+      </div>
+    <div style="background-color: #7b38d8; color: white">
           <form method="POST" action="/ceva.html"
              enctype = "multipart/form-data">
               <div class="form-group">
                   <label for="inputFile"></label>
-                  <input type="file" name="inputFile" id="myFile">
+                  <input style="width: 350px" type="file" name="inputFile" id="myFile">
+                  <button type = "submit">Submit</button>
               </div>
-
-              <button type = "submit">Submit</button>
           </form>
        </div>
 
@@ -82,16 +90,13 @@
           <label id="lum">Introduceti-va numele de utilizator: </label>
             {{ form.username_mes(value=current_user.username) }}
         </div>
-        <br>
-      <label id="ltm">Introduceti un mesaj: </label>
+      <label id="ltm" style="color: black">Introduceti un mesaj: </label>
         {{ form.text_mes(placeholder="Mesaj") }}
-
 
       <button id="btn2" onclick="funcadd()">
           <a href="/index.html">Trimite</a>
       </button>
-        </br>
-        <p>Faceti <a href="/index.html">refresh</a> pentru a vizualiza noile mesaje.</p>
+        <p>Dati <a href="/index.html">refresh</a> pentru a vizualiza noile mesaje.</p>
       <script>
           function funcadd(){
               var username_mes = document.getElementById("bon")
@@ -111,6 +116,8 @@
     </div>
   </div>
 </div>
+ </div>
 </body>
 </html>
+
 {% endblock %}

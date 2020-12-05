@@ -1,5 +1,6 @@
-body {
-    font-family: Arial;
+html,body {
+    font-family: Roboto;
+    height: 100%;
 }
 
 h1 {
@@ -68,7 +69,7 @@ h3 {
 }
 
 .botText span {
-    background-color: indianred;
+    background-color: #7b38d8;
     padding: 10px;
     border-radius: 2px;
 }
