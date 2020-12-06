@@ -1,10 +1,9 @@
 from datetime import datetime
 
-from flask import render_template, request, url_for, redirect, g, abort, jsonify, send_from_directory
+from flask import render_template, request, url_for, redirect, g, abort, jsonify, send_from_directory, send_file
 from flask_login import login_user, logout_user, current_user
 import werkzeug.exceptions
 from app import app, lm, db
-
 from app.models import User, Friend, Chat, Message, FileContinut
 from app.forms import LoginForm, RegisterForm, FriendForm, ConnectChatForm, MessageForm
 import json
@@ -88,9 +87,8 @@ def login():
     return render_template('layouts/default.html', content=render_template('pages/login.html', form=form, msg=msg, password=password)) #default distribuie roluri la pagini
 
 #ruta principala
-@app.route('/', defaults={'path': 'user.html'}, methods=['GET', 'POST'])
-@app.route('/<path>')
-def userprofile(path):
+@app.route('/', methods=['GET', 'POST'])
+def userprofile():
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
 
@@ -101,7 +99,7 @@ def userprofile(path):
     user = User.query.all()
     server = Friend.query.all()
     if request.method == 'GET':
-        return render_template('layouts/default.html', content=render_template('pages/'+path, server=server,
+        return render_template('layouts/default.html', content=render_template('pages/user.html', server=server,
                                                                                user=user, form=form, formr=formr, formc=formc, msg=msg))
 
     user_username = [item.username for item in User.query.distinct(User.username).all()]
@@ -133,7 +131,7 @@ def userprofile(path):
                                    content=render_template('pages/' + path, server=server, user=user, form=form, msg=msg))
             """
         except Exception:
-            return render_template('layouts/default.html', content=render_template('pages/'+path, server=server,
+            return render_template('layouts/default.html', content=render_template('pages/user.html', server=server,
                                                                                    username_friend=username_friend, user=user, form=form, formr=formr, formc=formc, msg=msg))
 
     for i in user_username:
@@ -143,7 +141,7 @@ def userprofile(path):
             prieteni = Chat(user_pers1, user_pers2)
             prieteni.save2()
 
-    return render_template('layouts/default.html', content=render_template('pages/'+path, server=server,
+    return render_template('layouts/default.html', content=render_template('pages/user.html', server=server,
                                                                            username_friend=username_friend, user=user, form=form, formr=formr, formc=formc, msg=msg))
 
 @app.route('/home.html', methods=['GET', 'POST'])
@@ -176,11 +174,15 @@ def delete():
 @app.route('/index.html', methods=['GET', 'POST'])
 def platforma():
     form = MessageForm(request.form)
+    fisierele = FileContinut.query.all()
     messages = Message.query.all()
+    membrii = [item.username_mes for item in Message.query.distinct(Message.username_mes).all()]
+    membrii = list(dict.fromkeys(membrii))
+    print(membrii)
     friend = Friend.query.all()
     if request.method == 'GET':
         return render_template('layouts/default.html',
-                               content=render_template('pages/index.html', form=form, messages=messages, friend=friend))
+                               content=render_template('pages/index.html', form=form, messages=messages, fisierele=fisierele, friend=friend, membrii=membrii))
 
     if form.validate_on_submit:
         try:
@@ -193,10 +195,10 @@ def platforma():
             mesaj.save()
         except Exception:
             return render_template('layouts/default.html',
-                                   content=render_template('pages/index.html', form=form, messages=messages, friend=friend, username_mes=username_mes, text_mes=text_mes, dateTime=dateTime))
+                                   content=render_template('pages/index.html', form=form, messages=messages, fisierele=fisierele, friend=friend, username_mes=username_mes, text_mes=text_mes, dateTime=dateTime))
 
     return render_template('layouts/default.html',
-                           content=render_template('pages/index.html', form=form, messages=messages, friend=friend, username_mes=username_mes, text_mes=text_mes, dateTime=dateTime))
+                           content=render_template('pages/index.html', form=form, messages=messages, fisierele=fisierele, friend=friend, username_mes=username_mes, text_mes=text_mes, dateTime=dateTime))
 
 
 @app.route('/ceva.html', methods=["POST"])
@@ -353,4 +355,23 @@ def get_bot_response():
                'Bye!'
     return manipulareYaml.convorbireXAI(userText)
 
+
+@app.route('/manifest.json')
+def manifest():
+    return send_from_directory('static', 'manifest.json')
+
+@app.route('/service-worker.js')
+def sw():
+    return send_from_directory('static', 'service-worker.js'), 200, {'Content-Type': 'text/javascript'}
+
+
+@app.route('/sw.js')
+def sw1():
+    return send_from_directory('static', 'sw.js')
+
+@app.route('/download')
+def download_file():
+    name_fc = request.form.get('name_fc', '', type=str)
+    p = "gui6.png"
+    return send_file(p, as_attachment=True)
 

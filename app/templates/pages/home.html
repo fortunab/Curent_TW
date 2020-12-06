@@ -6,6 +6,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <link href="/static/boot.css" rel="stylesheet" />
+    <script src="/static/assets/js/light-bootstrap-dashboard.js" type="text/javascript"></script>
+    <link href="/static/assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
+
+      <script type="text/javascript" src="{{ url_for('static', filename='javascript/install.js') }}"></script>
+
 
     <link rel="icon" type="image/png" href="/static/media/refbot.jpg">
     <title></title>
@@ -34,7 +39,7 @@
         }
 
         .dateText span {
-            background-color: gold;
+            background-color: mediumpurple;
             padding: 5px;
             border-radius: 2px;
         }
@@ -62,7 +67,7 @@
         }
 
         .button {
-          background-color: #009688;
+          background-color: #7b38d8;
           border: none;
           color: white;
           padding: 8px;
@@ -117,7 +122,7 @@
         }
 
         .hintText {
-            color: rebeccapurple;
+            color: mediumpurple;
             font-family: monospace;
             font-size: 17px;
             text-align: left;
@@ -142,10 +147,10 @@
     <div class="align-content-center">
     <div class="container-fluid">
       <div id="chatbox">
-          <marquee behavior="scroll" bgcolor="gold" loop="-1" width="30%">
+          <marquee behavior="scroll" bgcolor="mediumpurple" loop="-1" width="30%">
                <i>
                   <font color="indigo">
-                    <strong>
+                    <strong style="color: white">
                         Conversation has just started on:
                      <span id="time"></span>
                     </strong>
@@ -153,17 +158,17 @@
                </i>
           </marquee>
 
-          <div id="textmultiplu" class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"> <span id="messag"></span></p></div>
+          <div id="textmultiplu" class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="auto" height="30"> <span id="messag"></span></p></div>
           <script>
             $('#messag').html('XAIBOT is typing...');
             setTimeout(function(){
                 $('#messag').html('XAIBOT: Hello!');
-                var add = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"> <span id="messag2"></span></p></div>';
+                var add = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="auto" height="30"> <span id="messag2"></span></p></div>';
                 $('#textmultiplu').append(add);
                 $('#messag2').html('XAIBOT is typing...');
                 setTimeout(function () {
                     $('#messag2').html("XAIBOT: I'm XAIBOT, Explainable AI virtual assistant.");
-                    var add2 = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"> <span id="messag3"></span></p></div>';
+                    var add2 = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="auto" height="30"> <span id="messag3"></span></p></div>';
                     $('#textmultiplu').append(add2);
                     $('#messag3').html('XAIBOT is typing...');
                     setTimeout(function () {
@@ -233,12 +238,12 @@
           var variab = '<p class="dateText"><span>' + datatimp + '</span></p>';
           $("#chatbox").append(variab);
           var rawText = $("#textInput").val();
-          var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText + '</span><img src="static/media/user.ico" width="40" height="30"></p>';
+          var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText + '</span><img src="static/media/user.ico" width="auto" height="30"></p>';
           $("#textInput").val("");
           $("#chatbox").append(userHtml);
 
           $.get("/name", { msg: rawText }).done(function(data) {
-            var botHtml = '<p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span id="messages1">' + 'XAIBOT is typing...' + '</span></p>';
+            var botHtml = '<p class="botText"><img src="static/media/chatbot.ico" width="auto" height="30"><span id="messages1">' + 'XAIBOT is typing...' + '</span></p>';
             //$('#messages1').html();
             setTimeout(function() {
                 $('#messages1').html('XAIBOT: ' + data);
@@ -277,14 +282,14 @@
           var variab = '<p class="dateText"><span>' + datatimp + '</span></p>';
           $("#chatbox").append(variab);
           var rawText1 = "About XAI and your sapiens.";
-          var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText1 + '</span><img src="static/media/user.ico" width="40" height="30"></p>';
+          var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText1 + '</span><img src="static/media/user.ico" width="auto" height="30"></p>';
           $("#textInput").val("");
           $("#chatbox").append(userHtml);
 
-          var raspuns = '<div id="textmultiplu" class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span id="messages2">' + 'XAIBOT is typing...' + '</span></p></div>';
+          var raspuns = '<div id="textmultiplu" class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="auto" height="30"><span id="messages2">' + 'XAIBOT is typing...' + '</span></p></div>';
              setTimeout(function() {
                $('#messages2').html('XAIBOT: Perfect!');
-               var add = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"> <span id="messages21">' + 'XAIBOT is typing...' + '</span></p></div>';
+               var add = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="auto" height="30"> <span id="messages21">' + 'XAIBOT is typing...' + '</span></p></div>';
                 $('#chatbox').append(add);
                 setTimeout(function () {
                     $('#messages21').html('XAIBOT: Let me ask you, what do you do?');
@@ -322,14 +327,14 @@
           var variab = '<p class="dateText"><span>' + datatimp + '</span></p>';
           $("#chatbox").append(variab);
           var rawText1 = "I want you to detect references.";
-          var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText1 + '</span><img src="static/media/user.ico" width="40" height="30"></p>';
+          var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText1 + '</span><img src="static/media/user.ico" width="auto" height="30"></p>';
           $("#textInput").val("");
           $("#chatbox").append(userHtml);
 
-          var raspuns = '<div id="textmultiplu" class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span id="messages3">' + 'XAIBOT is typing...' + '</span></p></div>';
+          var raspuns = '<div id="textmultiplu" class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="auto" height="30"><span id="messages3">' + 'XAIBOT is typing...' + '</span></p></div>';
              setTimeout(function() {
                $('#messages3').html('XAIBOT: That is cool! I will do it.');
-               var add = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"> <span id="messages31">' + 'XAIBOT is typing...' + '</span></p></div>';
+               var add = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="auto" height="30"> <span id="messages31">' + 'XAIBOT is typing...' + '</span></p></div>';
                 $('#chatbox').append(add);
                 setTimeout(function () {
                     $('#messages31').html('XAIBOT: Are you ready?');
@@ -376,19 +381,19 @@
           var variab = '<p class="dateText"><span>' + datatimp + '</span></p>';
           $("#chatbox").append(variab);
           var rawText1 = "I am a student.";
-          var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText1 + '</span><img src="static/media/user.ico" width="40" height="30"></p>';
+          var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText1 + '</span><img src="static/media/user.ico" width="auto" height="30"></p>';
           $("#textInput").val("");
           $("#chatbox").append(userHtml);
 
-          var raspuns = '<p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span id="messages4">' + 'XAIBOT is typing...' + '</span></p>';
+          var raspuns = '<p class="botText"><img src="static/media/chatbot.ico" width="40" height="auto"><span id="messages4">' + 'XAIBOT is typing...' + '</span></p>';
             setTimeout(function(){
                 $('#messages4').html('XAIBOT: Wow! Nice. But, is it hard to study?');
-                var add = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"> <span id="messages42"></span></p></div>';
+                var add = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="auto" height="30"> <span id="messages42"></span></p></div>';
                 $('#chatbox').append(add);
                 $('#messages42').html('XAIBOT is typing...');
                 setTimeout(function () {
                     $('#messages42').html('XAIBOT: Listen. I am glad! But I want to start.');
-                    var add2 = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"> <span id="messages43"></span></p></div>';
+                    var add2 = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="auto" height="30"> <span id="messages43"></span></p></div>';
                     $('#chatbox').append(add2);
                     $('#messages43').html('XAIBOT is typing...');
                     setTimeout(function () {
@@ -428,19 +433,19 @@
           var variab = '<p class="dateText"><span>' + datatimp + '</span></p>';
           $("#chatbox").append(variab);
           var rawText1 = "I work for a company/ in institution.";
-          var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText1 + '</span><img src="static/media/user.ico" width="40" height="30"></p>';
+          var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText1 + '</span><img src="static/media/user.ico" width="auto" height="30"></p>';
           $("#textInput").val("");
           $("#chatbox").append(userHtml);
 
-          var raspuns = '<p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span id="messages5">' + 'XAIBOT is typing...' + '</span></p>';
+          var raspuns = '<p class="botText"><img src="static/media/chatbot.ico" width="auto" height="30"><span id="messages5">' + 'XAIBOT is typing...' + '</span></p>';
             setTimeout(function(){
                 $('#messages5').html('XAIBOT: Very well. Is it a company/institution with big quality and a lot of opportunity?');
-                var add = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"> <span id="messages52"></span></p></div>';
+                var add = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="auto" height="30"> <span id="messages52"></span></p></div>';
                 $('#chatbox').append(add);
                 $('#messages52').html('XAIBOT is typing...');
                 setTimeout(function () {
                     $('#messages52').html('XAIBOT: Listen. I am glad! But I want to start.');
-                    var add2 = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"> <span id="messages53"></span></p></div>';
+                    var add2 = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="auto" height="30"> <span id="messages53"></span></p></div>';
                     $('#chatbox').append(add2);
                     $('#messages53').html('XAIBOT is typing...');
                     setTimeout(function () {
@@ -480,19 +485,19 @@
           var variab = '<p class="dateText"><span>' + datatimp + '</span></p>';
           $("#chatbox").append(variab);
           var rawText1 = "I am a freelancer.";
-          var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText1 + '</span><img src="static/media/user.ico" width="40" height="30"></p>';
+          var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText1 + '</span><img src="static/media/user.ico" width="auto" height="30"></p>';
           $("#textInput").val("");
           $("#chatbox").append(userHtml);
 
-          var raspuns = '<p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span id="messages6">' + 'XAIBOT is typing...' + '</span></p>';
+          var raspuns = '<p class="botText"><img src="static/media/chatbot.ico" width="auto" height="30"><span id="messages6">' + 'XAIBOT is typing...' + '</span></p>';
             setTimeout(function(){
                 $('#messages6').html('XAIBOT: Very nice! How is it going?');
-                var add = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"> <span id="messages62"></span></p></div>';
+                var add = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="auto" height="30"> <span id="messages62"></span></p></div>';
                 $('#chatbox').append(add);
                 $('#messages62').html('XAIBOT is typing...');
                 setTimeout(function () {
                     $('#messages62').html('XAIBOT: Listen. I am glad! But I want to start.');
-                    var add2 = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"> <span id="messages63"></span></p></div>';
+                    var add2 = '<div class="botText"><p class="botText"><img src="static/media/chatbot.ico" width="auto" height="30"> <span id="messages63"></span></p></div>';
                     $('#chatbox').append(add2);
                     $('#messages63').html('XAIBOT is typing...');
                     setTimeout(function () {
@@ -532,12 +537,12 @@
             var variab = '<p class="dateText"><span>' + datatimp + '</span></p>';
             $("#chatbox").append(variab);
             var rawText = $("#textInput").val();
-            var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText + '</span><img src="static/media/user.ico" width="40" height="30"></p>';
+            var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText + '</span><img src="static/media/user.ico" width="auto" height="30"></p>';
             $("#textInput").val("");
             $("#chatbox").append(userHtml);
 
             $.get("/discut", {msg: rawText}).done(function (data) {
-                var botHtml = '<p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span id="messages10a">' + 'XAIBOT is typing...' + '</span></p>';
+                var botHtml = '<p class="botText"><img src="static/media/chatbot.ico" width="auto" height="30"><span id="messages10a">' + 'XAIBOT is typing...' + '</span></p>';
                 setTimeout(function() {
                     $('#messages10a').html('XAIBOT: ' + data);
                     if(rawText.toLowerCase().localeCompare("yes")!=0){
@@ -577,12 +582,12 @@
           var variab = '<p class="dateText"><span>' + datatimp + '</span></p>';
           $("#chatbox").append(variab);
             var rawText = $("#textInput").val();
-            var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText + '</span><img src="static/media/user.ico" width="40" height="30"></p>';
+            var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText + '</span><img src="static/media/user.ico" width="auto" height="30"></p>';
             $("#textInput").val("");
             $("#chatbox").append(userHtml);
 
             if(rawText.toLowerCase().localeCompare("yes")!=0){
-                var botHtml = '<p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span id="messages11a">' + 'XAIBOT is typing...' + '</span></p>';
+                var botHtml = '<p class="botText"><img src="static/media/chatbot.ico" width="auto" height="30"><span id="messages11a">' + 'XAIBOT is typing...' + '</span></p>';
                 setTimeout(function() {
                     $('#messages11a').html('XAIBOT: Here, the conversation is over. For more results, please restart the application or meet Diogen and Flavia personally. Goodbye!');
                     var div1 = document.getElementById("userInput4");
@@ -623,7 +628,7 @@
                   }
 
                 $.get("/discut", {msg: rawText}).done(function (data) {
-                    var botHtml = '<p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span id="messages12">' + 'XAIBOT is typing...' + '</span></p>';
+                    var botHtml = '<p class="botText"><img src="static/media/chatbot.ico" width="auto" height="30"><span id="messages12">' + 'XAIBOT is typing...' + '</span></p>';
                     setTimeout(function() {
                         $('#messages12').html('XAIBOT: ' + data);
 
@@ -640,12 +645,12 @@
           var variab = '<p class="dateText"><span>' + datatimp + '</span></p>';
           $("#chatbox").append(variab);
             var rawText = $("#textInput").val();
-            var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText + '</span><img src="static/media/user.ico" width="40" height="30"></p>';
+            var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText + '</span><img src="static/media/user.ico" width="auto" height="30"></p>';
             $("#textInput").val("");
             $("#chatbox").append(userHtml);
 
             if(rawText.toLowerCase().localeCompare("yes")!=0){
-                var botHtml = '<p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span id="messages11a">' + 'XAIBOT is typing...' + '</span></p>';
+                var botHtml = '<p class="botText"><img src="static/media/chatbot.ico" width="auto" height="30"><span id="messages11a">' + 'XAIBOT is typing...' + '</span></p>';
                 setTimeout(function() {
                     $('#messages11a').html('XAIBOT: Here, the conversation is over. For more results, please restart the application or meet Diogen and Flavia personally. Goodbye!');
                     var div1 = document.getElementById("userInput4");
@@ -688,7 +693,7 @@
                   }
 
                 $.get("/discut_modif", {msg: rawText}).done(function (data) {
-                    var botHtml = '<p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span id="messages12">' + 'XAIBOT is typing...' + '</span></p>';
+                    var botHtml = '<p class="botText"><img src="static/media/chatbot.ico" width="auto" height="30"><span id="messages12">' + 'XAIBOT is typing...' + '</span></p>';
                     setTimeout(function() {
                         $('#messages12').html('XAIBOT: ' + data);
 
@@ -705,11 +710,11 @@
             var variab = '<p class="dateText"><span>' + datatimp + '</span></p>';
             $("#chatbox").append(variab);
             var rawText = $("#textInput").val();
-            var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText + '</span><img src="static/media/user.ico" width="40" height="30"></p>';
+            var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText + '</span><img src="static/media/user.ico" width="auto" height="30"></p>';
             $("#textInput").val("");
             $("#chatbox").append(userHtml);
             $.get("/get", {msg: rawText}).done(function (data) {
-                var botHtml = '<p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span>' + 'XAIBOT: ' + data + '</span></p>';
+                var botHtml = '<p class="botText"><img src="static/media/chatbot.ico" width="auto" height="30"><span>' + 'XAIBOT: ' + data + '</span></p>';
                 $("#chatbox").append(botHtml);
             });
             if(rawText.toLowerCase().localeCompare("exit")==0){
@@ -738,12 +743,12 @@
              var variab = '<p class="dateText"><span>' + datatimp + '</span></p>';
             $("#chatbox").append(variab);
             var rawText = $("#textInput").val();
-            var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText + '</span><img src="static/media/user.ico" width="40" height="30"></p>';
+            var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText + '</span><img src="static/media/user.ico" width="auto" height="30"></p>';
             $("#textInput").val("");
             $("#chatbox").append(userHtml);
 
             $.get("/discut_modif", {msg: rawText}).done(function (data) {
-                var botHtml = '<p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span>' + 'XAIBOT: ' + data + '</span></p>';
+                var botHtml = '<p class="botText"><img src="static/media/chatbot.ico" width="auto" height="30"><span>' + 'XAIBOT: ' + data + '</span></p>';
                 $("#chatbox").append(botHtml);
 
             });
@@ -781,12 +786,12 @@
               var variab = '<p class="dateText"><span>' + datatimp + '</span></p>';
               $("#chatbox").append(variab);
             var rawText = $("#textInput").val();
-            var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText + '</span><img src="static/media/user.ico" width="40" height="30"></p>';
+            var userHtml = '<p class="userText"><span>' + 'YOU: ' + rawText + '</span><img src="static/media/user.ico" width="auto" height="30"></p>';
             $("#textInput").val("");
             $("#chatbox").append(userHtml);
 
             $.get("/detectare", {msg: rawText}).done(function (data) {
-                var botHtml = '<p class="botText"><img src="static/media/chatbot.ico" width="40" height="30"><span>' + 'XAIBOT: ' + data + '</span></p>';
+                var botHtml = '<p class="botText"><img src="static/media/chatbot.ico" width="auto" height="30"><span>' + 'XAIBOT: ' + data + '</span></p>';
                 $("#chatbox").append(botHtml);
             });
 

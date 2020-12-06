@@ -1,0 +1,35 @@
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.8/push.min.js"></script>
+  </head>
+  <body>
+  <div id="navbar"><span>Push.js Tutorial</span></div>
+  <div id="wrapper">
+      <button id="notify-button">Notify Me!!</button>
+      <button id="clear-button">Clear All!</button>
+      <button id="check-button">Check Permission</button>
+  </div>
+
+  <script>
+      $("#notify-button").click(function(){
+        Push.create("Hello world!",{
+            body: "This is example of Push.js Tutorial",
+            icon: '/static/audio/Logo_small.png',
+            timeout: 2000,
+            onClick: function () {
+                window.focus();
+                this.close();
+            }
+        });
+      });
+      $("#clear-button").click(function(){
+           Push.clear();
+      });
+      $("#check-button").click(function(){
+            console.log(Push.Permission.has());
+      });
+  </script>
+  </body>
+</html>

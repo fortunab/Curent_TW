@@ -2,17 +2,72 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <script type="text/javascript" src="{{ url_for('static', filename='service-worker.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='javascript/app.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='javascript/install.js') }}"></script>
+
     <title></title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg " color-on-scroll="500">
                 <div class="container-fluid">
                     <a>Platforma intellBot TK</a>
+                    <button href="#" id="installButton" style="font-size:14px;color: #7b38d8; cursor: pointer"><b>Install Now</b></button>
+                    <script>
+                        let deferredInstallPrompt = null;
+                        const installButton = document.getElementById('installButton');
+                        installButton.addEventListener('click', installPWA);
+                        window.addEventListener('beforeinstallprompt', saveBeforeInstallPromptEvent);
+
+                        function saveBeforeInstallPromptEvent(evt) {
+                          deferredInstallPrompt = evt;
+                          installButton.removeAttribute('hidden');
+                        }
+
+                        function installPWA(evt) {
+                          deferredInstallPrompt.prompt();
+                          evt.srcElement.setAttribute('hidden', true);
+                          deferredInstallPrompt.userChoice
+                          .then((choice) => {
+                            if (choice.outcome === 'accepted') {
+                              console.log('User accepted the A2HS prompt', choice);
+                            } else {
+                              console.log('User dismissed the A2HS prompt', choice);
+                            }
+                            deferredInstallPrompt = null;
+                          });
+                        }
+
+
+                        window.addEventListener('appinstalled', logAppInstalled);
+
+                        function logAppInstalled(evt) {
+                          console.log('App was installed.', evt);
+                        }
+
+                    </script>
+                    <button id="askLocation"><i class="fa fa-map-marker" style="font-size:16px;color: #7b38d8; cursor: pointer"></i></button>
+
+                    <script>
+                        if ('geolocation' in navigator) {
+                          document.getElementById('askLocation').addEventListener('click', function () {
+                            navigator.geolocation.getCurrentPosition(function (location) {
+                              console.log(location);
+                            });
+                          });
+                        } else {
+                          console.log('Geolocation API not supported.');
+                        }
+                    </script>
+
+
                     <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar burger-lines"></span>
                         <span class="navbar-toggler-bar burger-lines"></span>
                         <span class="navbar-toggler-bar burger-lines"></span>
                     </button>
+
                 </div>
     </nav>
 </body>

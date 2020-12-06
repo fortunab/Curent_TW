@@ -79,12 +79,12 @@ tr:nth-child(even) {
 </style>
 </head>
 <body>
-<div class="content" align="center" style=" width: auto; margin-top: 120px;margin-bottom: 100px">
+<div class="content" align="center" style="width: auto; margin-top: 120px;margin-bottom: 100px">
     <div class="container-fluid" >
             <div class="col-md-8">
                 <div class="card" align="center" style="background-color: #b65fff; width: 480px;">
                     <div class="card-header">
-                        <h2 class="card-title" style="margin-bottom: 10px; color: black"><b>LOGIN</b></h2>
+                        <h2 class="card-title" style="margin-bottom: 10px"><b>LOGIN</b></h2>
                     </div>
                     <br />
                     {% if msg %}
@@ -104,20 +104,20 @@ tr:nth-child(even) {
                                         {{ form.password(placeholder="Password") }}
                                     </div>
                                     </label>
-                                    <div style="margin-top: 10px">
-                                    <input type='submit' onclick="logare_valida()" name='submit' value='Login' class="primary" style="color: #7b38d8; background-color: white;border-radius: 20px; width: 90px;height: 35px;border-color: white; cursor: pointer"/>
-                                        &nbsp &nbsp; <a style="color: white" href={{url_for('register')}}> Inregistrare</a>
-                                        <div class="clearfix"></div>
-                                    </div>
+    <div style="margin-top: 10px">
+                            <input type='submit' onclick="logare_valida()" name='submit' value='Login' class="primary" style="color: #7b38d8; background-color: white;border-radius: 20px; width: 90px;height: 35px;border-color: white; cursor: pointer"/>
+                            &nbsp &nbsp; <a style="color: white" href={{url_for('register')}}> Register</a>
+                            <div class="clearfix"></div>
+    </div>
                             <script>
                                 var pastrare_pw = {{ password }};
                                 var myInput = document.getElementById("txtNewPassword2");
                                 function logare_valida() {
                                     if(myInput.value.length < 6){
-                                        alert("Va rugam sa introduceti o parola mai lunga")
+                                        alert("Va rugam sa introduceti o parola mai lunga!")
                                     }
                                     if(pastrare_pw.value != myInput.value){
-                                        alert("Parola nu se potriveste cu numele utilizatorului")
+                                        alert("Parola incorecta!")
                                     }
                                 }
                             </script>

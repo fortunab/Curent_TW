@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField
-from wtforms.validators import Email, DataRequired, Length
+from wtforms import StringField, PasswordField, SubmitField
+from wtforms.validators import Email, DataRequired, Length, Required
+
 
 class LoginForm(FlaskForm):
 	username = StringField(u'Username', validators=[DataRequired(message='Parola sau nume de utilizator incorecte.')])
@@ -25,3 +26,8 @@ class ConnectChatForm(FlaskForm):
 class MessageForm(FlaskForm):
 	username_mes = StringField(u'username_mes', validators=[DataRequired()])
 	text_mes = StringField(u'text_mes', validators=[DataRequired()])
+
+class RoomForm(FlaskForm):
+	name = StringField('Name', validators=[Required()])
+	room = StringField('Room', validators=[Required()])
+	submit = SubmitField('Enter Chatroom')

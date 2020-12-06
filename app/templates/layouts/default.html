@@ -4,8 +4,6 @@
 <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="/static/assets/img/icon.ico">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
@@ -19,24 +17,38 @@
     <!-- Codul pentru formatul responsive -->
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
 
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <link href="/static/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/static/assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
     <link href="/static/assets/css/demo.css" rel="stylesheet" />
+
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='javascript/install.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='service-worker.js') }}"></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="static/assets/img/full-screen-image-3.jpg">
+    <link rel="apple-touch-startup-image" href="static/assets/img/sidebar-5.jpg">
+    <meta name="apple-mobile-web-app-title" content="intelBot TK cu PWA">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="indigo">
+
 </head>
 
 <body>
 <div class="container-fluid" style="font-family: Roboto;">
     <div class="bar-lateral">
         {% include 'includes/sidebar.html' %}
-        <div class="main-panel" style="height: 80%">
+        <div class="main-panel">
             {% include 'includes/navigation.html' %}
-                {{ content | safe }}
+            {{ content | safe }}
             {% include 'includes/footer.html' %}
         </div>
     </div>
 </div>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/app.js') }}"></script>
 </body>
 {% include 'includes/scripts.html' %}
 

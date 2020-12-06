@@ -19,7 +19,7 @@
 }
 </style>
 <div class="container-fluid" >
-    <div class="content" align="center" style=" width: auto; margin-top: 80px;margin-bottom: 80px">
+    <div class="content" align="center" style="width: auto; margin-top: 80px;margin-bottom: 80px">
             <div class="col-md-8">
                 <div class="card" align="center" style="background-color: #b65fff; width: 620px;">
                     <div class="card-header">
@@ -35,20 +35,20 @@
                         <form method="post" action="">
                             {{ form.hidden_tag() }}
                             <div class="row">
-                                <div class="column">
-                                    <label style="font-size: 16px;color: white">Name:  </label>
-                                    <br>
-                                    <label style="font-size: 16px;color: white; margin-top: 4px">Last Name:  </label>
-                                    <br>
-                                  <label style="font-size: 16px;color: white; margin-top: 4px">Username:  </label>
-                                    <br>
-                                  <label style="font-size: 16px;color: white; margin-top: 4px">Email:  </label>
-                                    <br>
-                                  <label style="font-size: 16px;color: white; margin-top: 4px">Password:  </label>
+  <div class="column">
+                                <label style="font-size: 16px;color: white">Name:  </label>
+<br>
+                                  <label style="font-size: 16px;color: white">Last Name:  </label>
+<br>
+                                  <label style="font-size: 16px;color: white">Username:  </label>
+<br>
+                                  <label style="font-size: 16px;color: white">Email:  </label>
+<br>
+                                  <label style="font-size: 16px;color: white">Password:  </label>
 
-            </div>
-                    <div class="column" >
-                            <label style="margin-left: 1px; font-size: 14px">{{ form.name(placeholder="Name") }}</label>
+  </div>
+  <div class="column" >
+    <label style="margin-left: 1px; font-size: 14px">{{ form.name(placeholder="Name") }}</label>
                             <br>
                             <label style="margin-left: 1px; font-size: 14px">{{ form.lastn(placeholder="Last name") }}</label>
                             <br>
@@ -56,9 +56,9 @@
                             <br>
                             <label style="margin-left: 1px; font-size: 14px">{{ form.email(placeholder="Email") }}</label>
                             <br>
-                            <label style="margin-left: 1px; font-size: 14px;">{{ form.password(placeholder="Password") }}</label>
-                    </div>
-        </div>
+                            <label style="margin-left: 1px; font-size: 14px">{{ form.password(placeholder="Password") }}</label>
+  </div>
+</div>
                             <div style="margin-top: 8px; color: white">
                             <input type='submit' name='submit' value='Register' class="primary" style="color: #7b38d8; background-color: white;border-radius: 20px; width: 90px;height: 35px;border-color: white; cursor: pointer"/>
                             &nbsp; &nbsp; Aveți deja un cont? <a href={{url_for('login')}} >Logați-vă</a>

@@ -1,6 +1,8 @@
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='javascript/install.js') }}"></script>
+
     <style>
 
 /* The Modal (background) */
@@ -77,6 +79,7 @@ tr:nth-child(even) {
 }
 
 </style>
+
 </head>
 <body>
     <div class="content" align="center">
@@ -212,7 +215,7 @@ tr:nth-child(even) {
                 </div>
 
                 <script>
-                    var usernPastrare = {{ username_friend }};
+                    var usernPastrare = "{{ username_friend }}";
                     var myInput = document.getElementById("txtUserFriend");
                     function funcadd(){
                                 var username_friend = document.getElementById("textfield2");

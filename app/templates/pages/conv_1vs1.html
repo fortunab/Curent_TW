@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Conv1v1</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
@@ -77,7 +77,7 @@
         border: 1px solid rebeccapurple;
       }
       div.cls3 {
-  height: 400px;
+  height: 390px;
   overflow: auto;
 }
     </style>
@@ -98,7 +98,15 @@
         </div>
         <div id="userInput">
                     <input id="textInput" type="text" name="msg" placeholder="Mesaj" />
-                </div>
+                    <input type="file" accept="image/*" style="margin-top: 3px; cursor: pointer" capture="files" />
+                    <button id='photofile' style="color: #7b38d8; cursor: pointer; margin-top: 3px"><i class="fa fa-camera"></i></button>
+                    <input type="file" id='photofile1' accept="image/*" capture="camera" class="btn" style="display:none; color: #7b38d8; cursor: pointer"/>
+        </div>
+        <script>
+                        $("#photofile").click(function () {
+                            $("#photofile1").trigger('click');
+                        });
+                    </script>
         <script>
                 function getBotResponse() {
                     var rawText = $("#textInput").val();

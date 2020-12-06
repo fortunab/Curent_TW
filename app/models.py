@@ -131,3 +131,52 @@ class FileContinut(db.Model):
         except IntegrityError:
             db.session.rollback()
         return self
+
+class Room(db.Model):
+    __tablename__ = 'room'
+
+    id_room = db.Column('id_room', db.Integer, primary_key=True)
+    name_user = db.Column('name_user', db.String)
+    room_nr = db.Column('room_nr', db.Integer)
+
+    def __init__(self, name_user, room_nr):
+        self.name_user = name_user
+        self.room_nr = room_nr
+
+    def __repr__(self):
+        return '<Message %r>' % self.id_room
+
+    def save(self):
+        db.session.add(self)
+        try:
+            db.session.commit()
+        except IntegrityError:
+            db.session.rollback()
+        return self
+
+
+class DirectMessage(db.Model):
+    __tablename__ = 'directmess'
+
+    id_dmes = db.Column('id_dmes', db.Integer, primary_key=True)
+    username_dmes = db.Column('username_dmes', db.String, nullable=False)
+    text_dmes = db.Column('text_dmes', db.String(500), nullable=False)
+    dateTime_dmes = db.Column(db.DateTime, index=True, nullable=False)
+
+    def __init__(self, username_dmes, text_dmes, dateTime_dmes):
+        self.username_dmes = username_dmes
+        self.text_dmes = text_dmes
+        self.dateTime_dmes = dateTime_dmes
+
+    def __repr__(self):
+        return '<Message %r>' % self.id_dmes
+
+    def save(self):
+        db.session.add(self)
+        try:
+            db.session.commit()
+        except IntegrityError:
+            db.session.rollback()
+        return self
+
+
