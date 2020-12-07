@@ -12,6 +12,7 @@ if ('serviceWorker' in navigator) {
 }
 
 // Push Notifications
+/*
 const pushButton = document.getElementById('push-btn');
 pushButton.addEventListener('click', askPermission);
 notificationButtonUpdate();
@@ -33,3 +34,4 @@ function notificationButtonUpdate() {
     pushButton.disabled = false;
   }
 }
+*/

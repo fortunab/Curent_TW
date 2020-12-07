@@ -220,16 +220,17 @@ a {
   border-bottom: 0.1em solid #D9D3D3;
 }
 
+
 .chatUser > a {
   display: flex;
   flex-direction: row;
   align-items: center;
-  text-align:vleft;
+  /*text-align: vleft;*/
   font-family: 'Lato', sans-serif;
 }
 
 .profilePic {
-  order: 1
+  order: 1;
   display: block;
   margin-left: 2.5em;
   height: 5em;
@@ -298,7 +299,7 @@ a {
 .conversationHistory {
   overflow: scroll;
   flex: auto;
-  order: 1
+  order: 1;
   flex-grow: 1;
   flex-shrink: 1;
   margin-bottom: 5em;
@@ -516,8 +517,7 @@ a {
 .userInfo {
   text-align: center;
 }
-/**************************************************************************************************/
-/* api styling */
+
 
 .container {
   /*align-items: center;*/
@@ -537,7 +537,7 @@ a {
   font-weight: 100;
   background: linear-gradient(90deg, #FD6F46 10%, #FB9832 90%);
   text-align: center;
-};
+}
 
 .lightDataContainer {
   width: 100%;
@@ -580,7 +580,7 @@ a {
 
 .timeStamp {
   position: relative;
-  display: hidden;
+  /*display: hidden;*/
 
 }
 
@@ -600,9 +600,6 @@ a {
 .lightDataListItem:hover .timeStamp {
       display: table-cell;
 }
-
-/**************************************************************************************************/
-/* miscellaneous styling */
 
 
 *::-webkit-input-placeholder {

@@ -110,7 +110,7 @@
         <script>
                 function getBotResponse() {
                     var rawText = $("#textInput").val();
-                    var userHtml = '<p class="userText"><img src="static/media/user.ico" width="auto" height="30"><span>' + rawText + "</span></p>";
+                    var userHtml = '<p class="userText"><img src="static/media/user.ico" width="auto" height="30"><span>{{ current_user.username }}: ' + rawText + "</span></p>";
                     $("#textInput").val("");
                     $("#chatbox").append(userHtml);
                     document

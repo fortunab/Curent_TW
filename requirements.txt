@@ -7,3 +7,7 @@ flask_sqlalchemy
 flask_bcrypt
 email_validator
 flask_socketio
+PyYaml
+sklearn
+numpy==1.19.3
+nltk

@@ -1,8 +1,5 @@
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='javascript/install.js') }}"></script>
-
     <style>
 
 /* The Modal (background) */
@@ -121,7 +118,7 @@ tr:nth-child(even) {
                                 {% endif %}
                                 {% if username_friend %}
                                     <p>L-ati adaugat pe {{ username_friend | safe }} cu succes in lista cu prieteni! </p>
-                                    <p>Dati <a href="user.html"> refresh </a>pentru a vizualiza noua lista. </p>
+                                    <p>Dati <a href="/"> refresh </a>pentru a vizualiza noua lista. </p>
                                 {% endif %}
                             </div>
 

@@ -1,46 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
-
-@fortunab
-fortunab
-/
-Proiect_PC_Stud_Dumas
-1
-00
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-Proiect_PC_Stud_Dumas/app/static/assets/css/light-bootstrap-dashboard.css
-@fortunab
-fortunab Add files via upload
-Latest commit eeafc3a on May 23
- History
- 1 contributor
-5310 lines (4611 sloc)  112 KB
-
-/*!
- =========================================================
- * Light Bootstrap Dashboard - v2.0.0 (Bootstrap 4)
- =========================================================
- * Product Page: http://www.creative-tim.com/product/light-bootstrap-dashboard
- * Copyright 2017 Creative Tim (http://www.creative-tim.com)
- * Licensed under MIT (https://github.com/creativetimofficial/light-bootstrap-dashboard/blob/master/LICENSE.md)
- =========================================================
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- */
-
-/*      light colors         */
 
 @keyframes spin {
     from {
@@ -2130,14 +2087,14 @@ fieldset[disabled] .form-control {
 .navbar .btn-simple {
     font-size: 16px;
 }
-
+/*
 .navbar.fixed {
     width: calc(100% - $sidebar-width);
     right: 0;
     left: auto;
     border-radius: 0;
 }
-
+*/
 
 .navbar .nc-icon {
     font-weight: 700;
@@ -3090,6 +3047,8 @@ fieldset[disabled] .form-control {
     display: flex;
 }
 
+
+/*
 .ct-label.ct-horizontal.ct-start {
     -webkit-box-align: flex-end;
     -webkit-align-items: flex-end;
@@ -5330,17 +5289,3 @@ License - nucleoapp.com/license/
 .nc-zoom-split::before {
     content: "\ea64";
 }
-
-/* all icon font classes list here */
-© 2020 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About

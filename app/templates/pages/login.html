@@ -79,7 +79,7 @@ tr:nth-child(even) {
 </style>
 </head>
 <body>
-<div class="content" align="center" style="width: auto; margin-top: 120px;margin-bottom: 100px">
+<div class="content" align="center" style="width: auto; margin-top: 100px;margin-bottom: 100px">
     <div class="container-fluid" >
             <div class="col-md-8">
                 <div class="card" align="center" style="background-color: #b65fff; width: 480px;">
@@ -114,10 +114,10 @@ tr:nth-child(even) {
                                 var myInput = document.getElementById("txtNewPassword2");
                                 function logare_valida() {
                                     if(myInput.value.length < 6){
-                                        alert("Va rugam sa introduceti o parola mai lunga!")
+                                        alert("Va rugam sa introduceti o parola mai lunga!").fontcolor("white");
                                     }
                                     if(pastrare_pw.value != myInput.value){
-                                        alert("Parola incorecta!")
+                                        alert("Parola incorecta!").fontcolor("white");
                                     }
                                 }
                             </script>
