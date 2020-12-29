@@ -21,7 +21,7 @@ header {
   height: 7em;
   width: auto;
   text-align: center;
-  background: linear-gradient(90deg, #FD6F46 10%, #FB9832 90%);
+  background: linear-gradient(90deg, mediumorchid 10%, rebeccapurple 90%);
 }
 
 header > h1 {

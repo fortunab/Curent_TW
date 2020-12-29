@@ -32,33 +32,32 @@
         <div style="margin-top: 5px;margin-bottom: 5px;color: #7b38d8; font-size: 20px" align="center">
             <b>Lista prieteni</b>
         </div>
-      </div>
-        <div >
-            {% for f in friend %}
-                {% if f.username_fk==current_user.username %}
-                  <a href="/{{ current_user.username }}-{{f.username_friend}}">
-                  <div style="margin-top: 2px;margin-bottom: 2px;color: black; font-size: 16px" align="center">
-                        {{ f.name_fr }}
+        </div>
+            <div>
+                {% for f in friend %}
+                    {% if f.username_fk==current_user.username %}
+                        <a href="/{{ current_user.username }}-{{f.username_friend}}">
+                            <div style="margin-top: 2px;margin-bottom: 2px;color: black; font-size: 16px" align="center">
+                                {{ f.name_fr }}
+                            </div>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="conversation">
+            <div class="conversationHistory" id="conversationHistory">
+                <div class="conversationHeader">
+                    <div style="margin-top: 5px;margin-bottom: 5px;color: #7b38d8; font-size: 20px" align="center">
+                        <b>Mesaje</b>
                     </div>
-                  </a>
-                {% endif %}
-            {% endfor %}
-        </div>
-
-  </div>
-  <div class="conversation">
-    <div class="conversationHistory" id="conversationHistory">
-      <div class="conversationHeader">
-        <div style="margin-top: 5px;margin-bottom: 5px;color: #7b38d8; font-size: 20px" align="center">
-            <b>Mesaje</b>
-        </div>
-      </div>
-      <div id="messageList">
-         <div class="cls3">
-        {% for m in messages %}
-      <ol id="demo">
-            {% set filei=0 %}
-            {% for fc in fisierele %}
+                </div>
+                <div id="messageList">
+                    <div class="cls3">
+                        {% for m in messages %}
+                            <ol id="demo">
+                                {% set filei=0 %}
+                                    {% for fc in fisierele %}
                 {% set filei=1 %}
                 {% if m.text_mes == fc.name_fc %}
                     {% set filei=1 %}
